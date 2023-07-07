@@ -1,0 +1,81 @@
+@startuml
+
+package "Extract Data" <<Sys>> {
+  [Select Repository]
+  [Extract Commits]
+  [Extract Files]
+  [Filter Files]
+  [Generate Dependencies]
+}
+package "Calculate Metrics" <<Sys>>{
+  [Files Occurrencies in Commits]
+  [Accumulated Modified LOCs]
+  [Cyclometic Complexity]
+}
+
+package "Architectural Smells" <<Sys>>{
+  [Extract AS]
+}
+
+package "Design Smells" <<Sys>>{
+  [Extract DS]
+}
+
+package "Generate Quartiles" <<Sys>>{
+  [Quartiles FOC]
+  [Quartiles AMLOC]
+}
+
+package "Generate Scatter Plots" <<Sys>>{
+  [Raw Scatter Plot AMOLCxFOC]
+  [Analysis Scatter Plot]
+}
+
+package "Extract ATD Files" <<Sys>>{
+  [Select Critical Files]
+  [Files changed together]
+  [Files impacted]
+  [Analysis Files]
+}
+
+[Pydriller] --> [Extract Commits]
+[Select Repository] --> [Extract Commits]
+[Extract Commits] --> [Extract Files]
+[Extract Files] --> [Filter Files]
+[Filter Files] --> [Generate Dependencies]
+
+[Filter Files] ..> [Files Occurrencies in Commits]
+[Filter Files] ..> [Accumulated Modified LOCs]
+[Filter Files] ..> [Cyclometic Complexity]
+
+[Filter Files] ..> [Extract AS]
+[Filter Files] ..> [Extract DS]
+
+[Files Occurrencies in Commits] ..> [Quartiles FOC]
+[Accumulated Modified LOCs] ..> [Quartiles AMLOC]
+
+[Quartiles FOC] ..> [Raw Scatter Plot AMOLCxFOC]
+[Quartiles AMLOC] ..> [Raw Scatter Plot AMOLCxFOC]
+
+[Raw Scatter Plot AMOLCxFOC] ..> [Analysis Scatter Plot]
+
+[ARCAN] --> [Extract AS]
+[DesigniteJava] --> [Extract DS]
+
+[Cyclometic Complexity] --> [Analysis Scatter Plot]
+[Extract AS] --> [Analysis Scatter Plot]
+[Extract DS] --> [Analysis Scatter Plot]
+
+[Analysis Scatter Plot] --> [Select Critical Files]
+
+[Generate Dependencies] --> [Files changed together]
+[Generate Dependencies] --> [Files impacted]
+
+[Select Critical Files] --> [Files changed together]
+[Select Critical Files] --> [Files impacted]
+
+[Files changed together] --> [Analysis Files]
+[Files impacted] --> [Analysis Files]
+
+
+@enduml

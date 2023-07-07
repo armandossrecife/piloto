@@ -173,9 +173,12 @@ df_files_commits_from_db[['file_filename', 'file_complexity', 'author_date']].so
 # Mostra as complexidades ciclomáticas de um determinado arquivo
 df_files_commits_from_db[['file_filename', 'file_complexity', 'author_date']].sort_values(by=['file_filename', 'author_date'], ascending=True).query("file_filename == 'UserController.java'")
 
-df_commits_from_db.to_csv('promocity_commits.csv') 
-df_files_from_db.to_csv('promocity_files.csv') 
-df_files_commits_from_db.to_csv('promocity_files_commits.csv') 
+try: 
+  df_commits_from_db.to_csv('promocity_commits.csv') 
+  df_files_from_db.to_csv('promocity_files.csv') 
+  df_files_commits_from_db.to_csv('promocity_files_commits.csv') 
+except Exception as ex: 
+  print(f'Erro ao salvar o arquivos .csv: {str(ex)}')
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -433,7 +436,7 @@ plt.ylabel(abbr['frequency_commits'])
 plt.show()
 
 lista_temp_index_modified_lines = []
-for items in df_em_fc_java_impl.modified_lines.iteritems():
+for items in df_em_fc_java_impl.modified_lines.items():
   lista_temp_index_modified_lines.append((items[0], items[1]))
 
 list_initial_critical_files_from_sp = []
@@ -477,7 +480,7 @@ for i in range(0,  len(my_temp_lista_arquivos_criticos)):
   my_temp_lista_arquivos_criticos_names.append(my_temp_lista_arquivos_criticos[i][0])
 
 lista_temp_index_modified_lines = []
-for items in df_em_fc_java_impl.modified_lines.iteritems():
+for items in df_em_fc_java_impl.modified_lines.items():
   lista_temp_index_modified_lines.append((items[0], items[1]))
 
 list_initial_critical_files_from_sp = []
@@ -713,7 +716,10 @@ for key, value in dict_arquivos_dependentes_arquivos_criticos.items():
 # dict_arquivos_dependentes_arquivos_criticos
 
 df_arquivos_dependentes_arquivos_criticos = pd.DataFrame({'arquivos_criticos':l_ac, 'qtd_arquivos_dependentes':l_tamanho_adac, 'arquivos_dependentes':l_adac})
-df_arquivos_dependentes_arquivos_criticos.to_csv('arquivos_dependentes_arquivos_criticos.csv')
+try: 
+  df_arquivos_dependentes_arquivos_criticos.to_csv('arquivos_dependentes_arquivos_criticos.csv')
+except Exception as ex:
+  print(f'Erro ao salvar o arquivo arquivos_dependentes_arquivos_criticos.csv : {str(ex)}')
 
 for key, value in dict_arquivos_dependentes_arquivos_criticos.items():
   print(f"Mudanças na classe {key} podem impactar {len(value)} classes")
@@ -905,9 +911,13 @@ for key, value in get_dict_arquivos_dependem_e_cochange_critico(lista_arquivos_c
 
 dict_my_criticos_atd = {'arquivos_criticos': lista_arquivos_criticos_temp, 'qtd_dependentes_e_cochange':lista_tamanho_dependente_e_cochange, 'dependentes_e_cochange':lista_dependente_e_cochange}
 df_my_criticos_atd = pd.DataFrame(dict_my_criticos_atd)
-df_my_criticos_atd
+print(df_my_criticos_atd)
 
-df_my_criticos_atd.to_csv('arquivos_dependentes_e_cochange_com_arquivos_criticos.csv')
+
+try:
+  df_my_criticos_atd.to_csv('arquivos_dependentes_e_cochange_com_arquivos_criticos.csv')
+except Exception as ex:
+  print(f'Erro ao salvar o arquivo arquivos_dependentes_e_cochange_com_arquivos_criticos.csv: {str(ex)}')
 
 df_temp2 = df_my_criticos_atd[['arquivos_criticos', 'qtd_dependentes_e_cochange']].sort_values('qtd_dependentes_e_cochange', ascending = False)
 df_temp2

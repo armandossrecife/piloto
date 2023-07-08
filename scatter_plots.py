@@ -95,7 +95,7 @@ def calcula_quartiles_frequencia_commmits_no_outliers_less_3(df_boxplot_fc_java_
   print(f'Quartis da Frequencia de Commits Q1: {fc_q1_java_impl}, Q2: {fc_q2_java_impl}, Q3: {fc_q3_java_impl}, Q4: {fc_q4_java_impl}')
   return fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl
 
-def gera_df_foc_amloc(df_accumulated_modified_locs):
+def gera_df_foc_amloc(df_accumulated_modified_locs, df_fc):
   df_em_fc = df_accumulated_modified_locs[['name','modified_lines']]
   df_em_fc['frequency_commits'] = df_fc['frequency_commits']
   return df_em_fc 
@@ -120,7 +120,7 @@ def gera_scatter_plot_foc_amloc(df_em_fc):
   plt.savefig('scatter_plot_foc_amloc.png')
   plt.show()
 
-def gera_scatter_plot_foc_amloc(df_em_fc):
+def gera_scatter_plot_foc_amloc_only_java(df_em_fc):
   # Cria um df sem os arquivos de Teste
   df_em_fc_no_test = df_em_fc[(df_em_fc["name"].str.contains('Test') == False)]
   # Cria um df contendo apenas os arquivos .java de implementacao

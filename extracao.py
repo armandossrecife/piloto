@@ -3,24 +3,10 @@ import dao
 import pydriller
 import utils
 import datetime
-
-def testa_extensao_java(arquivo):
-    if '.java' in arquivo:
-        return True
-    else:
-        return False 
-
-def clona_repositorio(my_repositorio):
-    try:
-        print('Clona repositório promocity')
-        comando = f'git clone {my_repositorio}'
-        os.system(comando)
-        print('Repositorio clonado com sucesso!')
-    except Exception as ex:
-        print(f'Erro na clonagem do repositorio {my_repositorio}: {str(ex)}')
+import utilidades
 
 def extrai_informacoes_repositorio(my_repositorio='https://github.com/armandossrecife/promocity.git'):
-    clona_repositorio(my_repositorio)
+    utilidades.clona_repositorio(my_repositorio)
 
     print('Cria a sessão de banco de dados')
     db_session = dao.create_session()
@@ -76,7 +62,7 @@ def extrai_informacoes_repositorio(my_repositorio='https://github.com/armandossr
                                         old_path=file.old_path,
                                         new_path=file.new_path,
                                         filename=file.filename,
-                                        is_java=testa_extensao_java(file.filename),
+                                        is_java=utilidades.testa_extensao_java(file.filename),
                                         change_type=file.change_type.name,
                                         diff=str(file.diff),
                                         diff_parsed=utils.convert_dictionary_to_str(file.diff_parsed),

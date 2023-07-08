@@ -1,0 +1,100 @@
+1. Dependências instaladas com sucesso!
+
+2. Clona repositório promocity
+Cloning into 'promocity'...
+remote: Enumerating objects: 844, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (31/31), done.
+remote: Total 844 (delta 11), reused 24 (delta 3), pack-reused 798
+Receiving objects: 100% (844/844), 4.00 MiB | 14.32 MiB/s, done.
+Resolving deltas: 100% (325/325), done.
+Repositorio clonado com sucesso!
+
+3. Cria a sessão de banco de dados
+Cria as tabelas do banco
+Tabelas criadas com sucesso!
+
+4. Analisa commits e arquivos modificados. Aguarde...
+Sessão de banco de dados fechada!
+Quantidade de commits analisados: 91
+Tempo de análise: 0:00:24.769265
+
+5. Calcula o AMLOC
+Gera o boxplot de AMLOC
+Calcula os quartiles de AMLOC
+1, {'modified_lines': {'AbstractModel.java': 55, 'AbstractService.java': 57, 'BackendApplication.java': 23, 'BackendApplicationTests.java': 18, 'Book.java': 112, 'BookController.java': 100, 'BookNotFoundException.java': 23, 'BookService.java': 94, 'Category.java': 10, 'Coupon.java': 181, 'CouponController.java': 203, 'CouponNotFoundException.java': 14, 'CouponService.java': 176, 'CouponsRepository.java': 11, 'CouponsSent.java': 74, 'CouponsService.java': 29, 'Diagrama de Classes Servicos Promocity.asta': 0, 'Diagrama de Classes Servicos Promocity.png': 0, 'GPSPoint.java': 38, 'GenericExceptionMapper.java': 20, 'GeographicArea.java': 93, 'GeradorSenha.java': 33, 'ICouponService.java': 13, 'IPromotionService.java': 13, 'IStoreService.java': 13, 'IUserService.java': 27, 'JerseyConfiguration.java': 54, 'LICENSE': 27, 'LocationStore.java': 79, 'ManipuladorDatas.java': 27, 'Message.java': 20, 'Messenger.java': 31, 'MyStores.java': 34, 'MyStoresRepository.java': 12, 'MyStoresService.java': 26, 'MyTracking.java': 38, 'MyTrackingRepository.java': 12, 'MyTrackingService.java': 28, 'PrincipalController.java': 85, 'Promocity - Um serviço ubíquo geolocalizado de promoções contextuais.pdf': 0, 'Promotion.java': 152, 'PromotionArea.java': 68, 'PromotionController.java': 201, 'PromotionNotFoundException.java': 14, 'PromotionService.java': 190, 'PromotionsRepository.java': 11, 'PromotionsService.java': 26, 'README.md': 205, 'ReportApplication.java': 28, 'ReportCoupon.java': 183, 'ReportPromotion.java': 118, 'ReportStore.java': 129, 'ReportUser.java': 136, 'Statemachine Contexto Proximidade.png': 0, 'Statemachine Diagram Checa Proximidade Usuario.asta': 0, 'Store.java': 179, 'StoreController.java': 439, 'StoreNotFoundException.java': 14, 'StoreService.java': 514, 'StoresRepository.java': 11, 'Swagger Doc Promocity Web Server.pdf': 0, 'Track.java': 39, 'TrackRepository.java': 11, 'TrackService.java': 31, 'User.java': 118, 'UserController.java': 963, 'UserLocationMonitoring.java': 316, 'UserNotFoundException.java': 10, 'UserService.java': 190, 'Users.java': 350, 'UsersRepository.java': 18, 'UsersService.java': 37, 'WebSecurityConfig.java': 27, 'amigos.sh': 11, 'application.yml': 27, 'basico.sh': 12, 'build.yml': 40, 'index.html': 6736, 'limpa-cupons.sql': 3, 'pom.xml': 85, 'popula.sql': 34, 'populadados.sql': 8, 'populausers.sql': 9, 'promocity.pdf': 0, 'restaura-banco.sql': 463, 'security.sql': 68, 'swagger-5.yaml': 1080, 'swagger.yaml': 1286, 'teste-promocity.sh': 44, 'teste.sh': 12, 'ufc.sh': 12}}
+
+6. Quartis do Total de Linhas Modificadas: Q1: [17.], Q2: [35.5], Q3: [120.75], Q4: [6736.]
+
+7. Calcula o AMLOC dos arquivos .java
+
+8. Gera o boxplot de AMLOC dos arquivos .java
+Calcula o AMLOC dos arquivos .java (Válidos - arquivos que modificaram pelo menos uma vez)
+Calcula os quartiles referente ao AMLOC dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [20.], Q2: [37.5], Q3: [120.75], Q4: [963.]
+
+9. Calculo da Complexidade Ciclomatica
+               file_filename  file_complexity                 author_date
+60        AbstractModel.java             11.0  2018-11-02 16:57:10.000000
+100       AbstractModel.java             11.0  2018-11-13 12:19:15.000000
+64      AbstractService.java              7.0  2018-11-02 16:57:10.000000
+2    BackendApplication.java              1.0  2018-10-31 00:40:14.000000
+38   BackendApplication.java              1.0  2018-11-01 19:24:13.000000
+..                       ...              ...                         ...
+123     UsersRepository.java              0.0  2018-11-21 19:41:29.000000
+66         UsersService.java              1.0  2018-11-02 16:57:10.000000
+125        UsersService.java              3.0  2018-11-21 19:41:29.000000
+124   WebSecurityConfig.java              1.0  2018-11-21 19:41:29.000000
+214   WebSecurityConfig.java              1.0  2018-12-05 15:26:10.000000
+
+[162 rows x 3 columns]
+
+10. Calcula o boxplot de complexidade ciclomática
+
+11. Calcula os quartiles das complexidades ciclomáticas
+
+Quartis do Total de Linhas Modificadas: Q1: [2.], Q2: [10.], Q3: [19.5], Q4: [59.]
+Calcula a complexidade ciclomática apenas dos arquivos .java
+Calcula os quartiles de complexidade ciclomática dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [2.], Q2: [10.], Q3: [20.], Q4: [59.]
+
+12. Calcula frequencia dos commits
+Quantidade de grupos: 91
+Grupos: {'AbstractModel.java': [60, 100], 'AbstractService.java': [64], 'BackendApplication.java': [2, 38], 'BackendApplicationTests.java': [30, 224], 'Book.java': [9], 'BookController.java': [6], 'BookNotFoundException.java': [20], 'BookService.java': [15], 'Category.java': [10], 'Coupon.java': [11, 46, 73, 130, 132, 155, 161, 174], 'CouponController.java': [71, 194], 'CouponNotFoundException.java': [21], 'CouponService.java': [16, 76], 'CouponsRepository.java': [75], 'CouponsSent.java': [40, 55], 'CouponsService.java': [77], 'Diagrama de Classes Servicos Promocity.asta': [187], 'Diagrama de Classes Servicos Promocity.png': [188], 'GPSPoint.java': [52], 'GenericExceptionMapper.java': [3], 'GeographicArea.java': [53, 68], 'GeradorSenha.java': [126], 'ICouponService.java': [25], 'IPromotionService.java': [26], 'IStoreService.java': [27], 'IUserService.java': [28, 67], 'JerseyConfiguration.java': [4, 39, 70, 83, 97, 111], 'LICENSE': [226], 'LocationStore.java': [204], 'ManipuladorDatas.java': [172], 'Message.java': [127], 'Messenger.java': [41, 56], 'MyStores.java': [143], 'MyStoresRepository.java': [145], 'MyStoresService.java': [146], 'MyTracking.java': [165, 175], 'MyTrackingRepository.java': [168], 'MyTrackingService.java': [170], 'PrincipalController.java': [98, 114, 135, 150, 158], 'Promocity - Um serviço ubíquo geolocalizado de promoções contextuais.pdf': [220], 'Promotion.java': [12, 35, 47, 74], 'PromotionArea.java': [42, 57, 112], 'PromotionController.java': [72, 195], 'PromotionNotFoundException.java': [22], 'PromotionService.java': [17, 78], 'PromotionsRepository.java': [82], 'PromotionsService.java': [79], 'README.md': [0, 31, 32, 110, 117, 118, 184, 185, 186, 219, 227, 228, 229], 'ReportApplication.java': [102], 'ReportCoupon.java': [95, 198, 216], 'ReportPromotion.java': [96, 199], 'ReportStore.java': [200], 'ReportUser.java': [201], 'Statemachine Contexto Proximidade.png': [189], 'Statemachine Diagram Checa Proximidade Usuario.asta': [190], 'Store.java': [13, 36, 48, 86], 'StoreController.java': [7, 33, 44, 85, 93, 94, 115, 141, 159, 163, 196], 'StoreNotFoundException.java': [23], 'StoreService.java': [18, 37, 50, 80, 88], 'StoresRepository.java': [87], 'Swagger Doc Promocity Web Server.pdf': [213], 'Track.java': [166], 'TrackRepository.java': [169], 'TrackService.java': [171], 'User.java': [14, 49, 61], 'UserController.java': [8, 34, 45, 59, 99, 116, 119, 120, 122, 129, 136, 142, 148, 152, 154, 160, 164, 173, 197, 203, 205, 207], 'UserLocationMonitoring.java': [5, 43, 58, 84, 113, 128, 147, 153, 191, 193, 202], 'UserNotFoundException.java': [24], 'UserService.java': [19, 51, 65], 'Users.java': [62, 101, 131, 133, 137, 144, 149, 156, 167, 176, 206], 'UsersRepository.java': [63, 123], 'UsersService.java': [66, 125], 'WebSecurityConfig.java': [124, 214], 'amigos.sh': [177], 'application.yml': [29, 69], 'basico.sh': [180], 'build.yml': [221, 222, 225], 'index.html': [208, 210, 215, 217, 218], 'limpa-cupons.sql': [182], 'pom.xml': [1, 54, 121, 223], 'popula.sql': [91, 92, 104, 109], 'populadados.sql': [107], 'populausers.sql': [108, 134, 140], 'promocity.pdf': [230], 'restaura-banco.sql': [183], 'security.sql': [81, 89, 90, 103, 105, 106, 138], 'swagger-5.yaml': [211], 'swagger.yaml': [209, 212], 'teste-promocity.sh': [139, 151, 157, 162, 178, 192], 'teste.sh': [179], 'ufc.sh': [181]}
+name
+AbstractModel.java              2
+AbstractService.java            1
+BackendApplication.java         2
+BackendApplicationTests.java    2
+Book.java                       1
+                               ..
+swagger-5.yaml                  1
+swagger.yaml                    2
+teste-promocity.sh              6
+teste.sh                        1
+ufc.sh                          1
+Length: 91, dtype: int64
+
+91, {'AbstractModel.java': 2, 'AbstractService.java': 1, 'BackendApplication.java': 2, 'BackendApplicationTests.java': 2, 'Book.java': 1, 'BookController.java': 1, 'BookNotFoundException.java': 1, 'BookService.java': 1, 'Category.java': 1, 'Coupon.java': 8, 'CouponController.java': 2, 'CouponNotFoundException.java': 1, 'CouponService.java': 2, 'CouponsRepository.java': 1, 'CouponsSent.java': 2, 'CouponsService.java': 1, 'Diagrama de Classes Servicos Promocity.asta': 1, 'Diagrama de Classes Servicos Promocity.png': 1, 'GPSPoint.java': 1, 'GenericExceptionMapper.java': 1, 'GeographicArea.java': 2, 'GeradorSenha.java': 1, 'ICouponService.java': 1, 'IPromotionService.java': 1, 'IStoreService.java': 1, 'IUserService.java': 2, 'JerseyConfiguration.java': 6, 'LICENSE': 1, 'LocationStore.java': 1, 'ManipuladorDatas.java': 1, 'Message.java': 1, 'Messenger.java': 2, 'MyStores.java': 1, 'MyStoresRepository.java': 1, 'MyStoresService.java': 1, 'MyTracking.java': 2, 'MyTrackingRepository.java': 1, 'MyTrackingService.java': 1, 'PrincipalController.java': 5, 'Promocity - Um serviço ubíquo geolocalizado de promoções contextuais.pdf': 1, 'Promotion.java': 4, 'PromotionArea.java': 3, 'PromotionController.java': 2, 'PromotionNotFoundException.java': 1, 'PromotionService.java': 2, 'PromotionsRepository.java': 1, 'PromotionsService.java': 1, 'README.md': 13, 'ReportApplication.java': 1, 'ReportCoupon.java': 3, 'ReportPromotion.java': 2, 'ReportStore.java': 1, 'ReportUser.java': 1, 'Statemachine Contexto Proximidade.png': 1, 'Statemachine Diagram Checa Proximidade Usuario.asta': 1, 'Store.java': 4, 'StoreController.java': 11, 'StoreNotFoundException.java': 1, 'StoreService.java': 5, 'StoresRepository.java': 1, 'Swagger Doc Promocity Web Server.pdf': 1, 'Track.java': 1, 'TrackRepository.java': 1, 'TrackService.java': 1, 'User.java': 3, 'UserController.java': 22, 'UserLocationMonitoring.java': 11, 'UserNotFoundException.java': 1, 'UserService.java': 3, 'Users.java': 11, 'UsersRepository.java': 2, 'UsersService.java': 2, 'WebSecurityConfig.java': 2, 'amigos.sh': 1, 'application.yml': 2, 'basico.sh': 1, 'build.yml': 3, 'index.html': 5, 'limpa-cupons.sql': 1, 'pom.xml': 4, 'popula.sql': 4, 'populadados.sql': 1, 'populausers.sql': 3, 'promocity.pdf': 1, 'restaura-banco.sql': 1, 'security.sql': 7, 'swagger-5.yaml': 1, 'swagger.yaml': 2, 'teste-promocity.sh': 6, 'teste.sh': 1, 'ufc.sh': 1}
+
+13. Gera o boxplot da frequencia de commits
+
+Calcula os quartiles das frequencias de commits
+Quartis da Frequencia de Commits Q1: [1.], Q2: [1.], Q3: [2.], Q4: [22.]
+Gera o boxplot da FOC apenas dos arquivos .java
+Calcula os quartiles dos FOCs apenas dos arquivos .java com limite < 3
+Quartis da Frequencia de Commits Q1: [3.25], Q2: [5.], Q3: [10.25], Q4: [22.]
+
+14. Gera o dataframe de AMLOC e FOC
+Gera o dataframe (fator de multiplicacao) de AMLOC e FOC
+Gera o scatter plot AMLOC e FOC
+Gera o scatter plot AMLOC e FOC com Quadrantes
+
+15. Gera o scatter FINAL plot AMLOC e FOC com Quadrantes
+('StoreController.java', 439, 11)
+('UserController.java', 963, 22)
+('UserLocationMonitoring.java', 316, 11)
+('Users.java', 350, 11)
+
+16. Lista de arquivos críticos baseado em AMLOC e FOC:
+[('StoreController.java', 439, 11), ('UserController.java', 963, 22), ('UserLocationMonitoring.java', 316, 11), ('Users.java', 350, 11)]

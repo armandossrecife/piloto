@@ -150,13 +150,3 @@ def get_quartiles_complexidade_ciclomatica_java_impl(df_cc_temp_boxplot_em_java_
   em_q4_cc_temp_java_impl = np.percentile(df_cc_temp_boxplot_em_java_impl.file_complexity, [100])
   print(f'Quartis do Total de Linhas Modificadas: Q1: {em_q1_cc_temp_java_impl}, Q2: {em_q2_cc_temp_java_impl}, Q3: {em_q3_cc_temp_java_impl}, Q4: {em_q4_cc_temp_java_impl}')
   return em_q1_cc_temp_java_impl, em_q2_cc_temp_java_impl, em_q3_cc_temp_java_impl, em_q4_cc_temp_java_impl
-  # Mostra as Complexidades Ciclomáticas dos arquivos ordenada crescent pelo tempo
-  df_cc = df_files_commits_from_db[['file_filename', 'file_complexity', 'author_date']].sort_values(by=['file_filename', 'author_date'], ascending=True)
-  df_cc.query("file_filename == 'UserController.java'")
-
-  # Remove files that has not cc
-  # cc all files
-  df_cc_temp = df_cc.copy()
-  df_cc_temp = df_cc_temp[df_cc_temp.file_complexity.notnull()]
-
-  return df_cc_temp

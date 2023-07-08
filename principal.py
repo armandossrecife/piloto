@@ -40,3 +40,12 @@ em_q1_java_impl, em_q2_java_impl, em_q3_java_impl, em_q4_java_impl = analisa_met
 print('Calculo da Complexidade Ciclomatica')
 df_complexidade_ciclomatica = analisa_metricas.get_complexidade_ciclomatica(df_files_commits_from_db)
 print(df_complexidade_ciclomatica)
+print('Calcula o boxplot de complexidade ciclomática')
+df_cc_temp,df_boxplot_cc_temp = analisa_metricas.get_boxplot_complexidade_ciclomatica(df_complexidade_ciclomatica)
+print('Calcula os quartiles das complexidades ciclomáticas')
+em_q1_cc_temp,em_q2_cc_temp, em_q3_cc_temp, em_q4_cc_temp = analisa_metricas.get_quartiles_complexidade_ciclomatica(df_boxplot_cc_temp)
+
+print('Calcula a complexidade ciclomática apenas dos arquivos .java')
+df_cc_temp_java_impl, df_cc_temp_boxplot_em_java_impl = analisa_metricas.get_boxplot_complexidade_ciclomatica_only_java(df_cc_temp)
+print('Calcula os quartiles de complexidade ciclomática dos arquivos .java')
+em_q1_cc_temp_java_impl, em_q2_cc_temp_java_impl, em_q3_cc_temp_java_impl, em_q4_cc_temp_java_impl= analisa_metricas.get_quartiles_complexidade_ciclomatica_java_impl(df_cc_temp_boxplot_em_java_impl)

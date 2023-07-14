@@ -29,7 +29,7 @@ def testa_extensao_java(arquivo: str):
 
 def clona_repositorio(my_repositorio: str):
     try:
-        print('Clona repositório promocity')
+        print(f'Clona repositório {my_repositorio}')
         comando = f'git clone {my_repositorio}'
         os.system(comando)
         print('Repositorio clonado com sucesso!')

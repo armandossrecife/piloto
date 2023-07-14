@@ -4,7 +4,7 @@ utilidades.carrega_dependencias()
 
 import extracao
 # 2. Extrai informacoes de commits e arquivos modificados em cada commmit
-extracao.extrai_informacoes_repositorio(my_repositorio='https://github.com/armandossrecife/promocity.git')
+extracao.extrai_informacoes_repositorio(my_repositorio='https://github.com/armandossrecife/promocity.git', nome_repositorio='promocity')
 
 import carrega_dataframes
 # 3. Carrega os dados das tabelas em dataframes

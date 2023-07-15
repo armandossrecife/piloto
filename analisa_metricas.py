@@ -32,7 +32,7 @@ def gera_boxplot_accumulated_modified_locs(df_accumulated_modified_locs_boxplot)
   plt.savefig('accumulated_modified_locs_boxplot.png')
 
 # Remove os arquivos que nao foram modificados
-# retorna o df_boxplot_amloc 
+# retorna o df_boxplot_amloc
 def get_accumulated_modified_locs_boxplot_valid(df_boxplot_em):
   # Remove os arquivos que não foram modificados ao longo do tempo (O linhas modificadas)
   df_boxplot_em = df_boxplot_em.drop(df_boxplot_em[df_boxplot_em.modified_lines == 0].index)
@@ -64,7 +64,7 @@ def show_boxplot_accumulated_modified_java_files(df_locm_java_impl):
 def get_quartiles_offiles_modified_lines(group_files_modified_lines, df_boxplot_em):
   list_of_files_modified_lines = group_files_modified_lines.to_dict()
   print(f'{ len(list_of_files_modified_lines) }, {list_of_files_modified_lines}')
-  # Mostra os quatis 
+  # Mostra os quatis
   em_q1 = np.percentile(df_boxplot_em.modified_lines, [25])
   em_q2 = np.percentile(df_boxplot_em.modified_lines, [50])
   em_q3 = np.percentile(df_boxplot_em.modified_lines, [75])
@@ -86,7 +86,7 @@ def get_accumulated_modified_java_files_valid(df_boxplot_em_java_impl):
 
 # Calcula os quartiles dos AMLOC .java validos
 def get_quartiles_offiles_modified_lines_java_files_valid(df_boxplot_em_java_impl):
-  # Mostra os quatis 
+  # Mostra os quatis
   em_q1_java_impl = np.percentile(df_boxplot_em_java_impl.modified_lines, [25])
   em_q2_java_impl = np.percentile(df_boxplot_em_java_impl.modified_lines, [50])
   em_q3_java_impl = np.percentile(df_boxplot_em_java_impl.modified_lines, [75])
@@ -118,7 +118,7 @@ def get_boxplot_complexidade_ciclomatica(df_cc_temp):
 # Calcula os quartiles das complexidades ciclomaticas
 # retorna os quartiles
 def get_quartiles_complexidade_ciclomatica(df_boxplot_cc_temp):
-  # Mostra os quatis 
+  # Mostra os quatis
   em_q1_cc_temp = np.percentile(df_boxplot_cc_temp.file_complexity, [25])
   em_q2_cc_temp = np.percentile(df_boxplot_cc_temp.file_complexity, [50])
   em_q3_cc_temp = np.percentile(df_boxplot_cc_temp.file_complexity, [75])

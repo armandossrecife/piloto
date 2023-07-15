@@ -1,5 +1,6 @@
 import utilidades
 import datetime
+import pandas as pd
 
 # promocity/src/main/java/ufc/cmu/promocity
 def gera_arquivos_java(path_projeto, nome_arquivo='arquivosjava.txt'):
@@ -42,7 +43,7 @@ def lista_arquivos_que_dependem_de(my_file, dicionario):
   return lista_temp
 
 # Cria duas listas contendo o conjunto de arquivos da versão analisada
-def cria_duas_listas_arquivos_analisados(nome_arquivo='arquivosjava.txt', diretorio_src_main):
+def cria_duas_listas_arquivos_analisados(nome_arquivo='arquivosjava.txt', diretorio_src_main='promocity/src/main/java'):
   lista_linhas_arquivos_cassandra = []
   lista_colunas_arquivos_cassandra = []
   with open(nome_arquivo, mode='r+', encoding='utf-8') as file:

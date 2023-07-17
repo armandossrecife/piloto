@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import utilidades
+import pandas as pd
 
 # AMLOC de todos os arquivos
 # retorna o df_amloc, df_boxplot_amloc e group_files_modified_lines
@@ -207,3 +208,140 @@ def get_quartiles_complexidade_ciclomatica_java_impl(df_cc_temp_boxplot_em_java_
   utilidades.export_csv_from_dict(dict_temp, path_arquivo)
 
   return em_q1_cc_temp_java_impl, em_q2_cc_temp_java_impl, em_q3_cc_temp_java_impl, em_q4_cc_temp_java_impl
+
+def calcula_frequencia_commits(df_files_from_db):
+  # calcula frequência dos arquivos na faixa de commits analisados
+  list_of_files_frequency_in_commits = {}
+
+  # Dataframe agrupados por arquivos e seus commits
+  df_groupby_name = df_files_from_db[['name', 'hash']].groupby('name')
+
+  print(f'Quantidade de grupos: {df_groupby_name.ngroups}')
+
+  group_files = df_groupby_name.size()
+
+  print('')
+  list_of_files_frequency_in_commits = group_files.to_dict()
+  print(f'list_of_files_frequency_in_commits: { len(list_of_files_frequency_in_commits) }')
+
+  # Cria um df contendo o arquivo e sua frequencia de commits
+  df_fc = pd.DataFrame({'name':group_files.index, 'frequency_commits': group_files.values})
+
+  df_boxplot_fc = df_fc
+  # Acrescenta a coluna File
+  df_boxplot_fc['File'] = 'File'
+  return df_fc, df_boxplot_fc
+
+def gera_boxplot_frequencia_commits(df_boxplot_fc, nome_repositorio):
+  plt.figure(figsize=(6,4))
+  sns.boxplot(x='File', y='frequency_commits', data=df_boxplot_fc)
+  current_path = os.getcwd()
+  nome_boxplot = current_path + '/' + 'graficos' + '/'+ nome_repositorio + '/' + 'boxplot' + '/' + nome_repositorio + '_' + 'boxplot_frequencia_commmits.png'
+  titulo = f"{nome_repositorio} - FOC - Todos os arquivos do repositório"
+  plt.title(titulo)
+  plt.savefig(nome_boxplot)
+  # Constroi o Boxsplot sem os outliers
+  plt.figure(figsize=(6,4))
+  sns.boxplot(x='File', y='frequency_commits', data=df_boxplot_fc, showfliers=False)
+  nome_boxplot = current_path + '/' + 'graficos' + '/'+ nome_repositorio + '/' + 'boxplot' + '/' + nome_repositorio + '_' + 'boxplot_frequencia_commmits_no_outliers.png'
+  titulo = f"{nome_repositorio} - FOC - Todos os arquivos do repositório sem outliers"
+  plt.title(titulo)
+  plt.savefig(nome_boxplot)
+
+def calcula_quartiles_frequencia_commits(df_boxplot_fc, nome_repositorio):
+  fc_q1 = np.percentile(df_boxplot_fc.frequency_commits , [25])
+  fc_q2 = np.percentile(df_boxplot_fc.frequency_commits , [50])
+  fc_q3 = np.percentile(df_boxplot_fc.frequency_commits , [75])
+  fc_q4 = np.percentile(df_boxplot_fc.frequency_commits , [100])
+  print(f'Quartis da Frequencia de Commits Q1: {fc_q1}, Q2: {fc_q2}, Q3: {fc_q3}, Q4: {fc_q4}')
+
+  dict_temp = {
+    'fc_q1': fc_q1,'fc_q2': fc_q2,'fc_q3': fc_q2,'fc_q4': fc_q4
+  }
+  current_path = os.getcwd()
+  path_arquivo = current_path + '/' + 'quartis' + '/'+ nome_repositorio + '/' + nome_repositorio + "_" + 'quartiles_frequencia_commits.csv'
+  utilidades.export_csv_from_dict(dict_temp, path_arquivo)
+
+  return fc_q1, fc_q2, fc_q3, fc_q4
+
+def gera_boxplot_frequencia_commits_only_java(df_fc, nome_repositorio):
+  # Cria um df sem os arquivos de Teste
+  df_fc_no_test = df_fc[(df_fc["name"].str.contains('Test') == False)]
+  # Cria um df contendo apenas os arquivos .java de implementacao
+  df_fc_java_impl = df_fc_no_test[df_fc_no_test['name'].str.contains('.java', regex=False)]
+  df_boxplot_fc_java_impl = df_fc_java_impl[['frequency_commits', 'File']]
+
+  plt.figure(figsize=(6,4))
+  sns.boxplot(x='File', y='frequency_commits', data=df_boxplot_fc_java_impl)
+  current_path = os.getcwd()
+  nome_boxplot = current_path + '/' + 'graficos' + '/'+ nome_repositorio + '/' + 'boxplot' + '/' + nome_repositorio + '_' + 'boxplot_frequencia_commmits_only_java.png'
+  titulo = f"{nome_repositorio} - FOC - Arquivos .java"
+  plt.title(titulo)
+  plt.savefig(nome_boxplot)
+  # Constroi o Boxsplot sem os outliers
+  plt.figure(figsize=(6,4))
+  sns.boxplot(x='File', y='frequency_commits', data=df_boxplot_fc_java_impl, showfliers=False)
+  nome_boxplot = current_path + '/' + 'graficos' + '/'+ nome_repositorio + '/' + 'boxplot' + '/' + nome_repositorio + '_' + 'boxplot_frequencia_commmits_only_java_no_outliers.png'
+  titulo = f"{nome_repositorio} - FOC - Arquivos .java sem outliers"
+  plt.title(titulo)
+  plt.savefig(nome_boxplot)
+
+  # Remove as frequencias muito baixas (total de commits < 3)
+  df_boxplot_fc_java_impl2 = df_boxplot_fc_java_impl.drop(df_boxplot_fc_java_impl[df_boxplot_fc_java_impl.frequency_commits < 3].index)
+  # Constroi o Boxsplot sem os outliers
+  plt.figure(figsize=(6,4))
+  sns.boxplot(x='File', y='frequency_commits', data=df_boxplot_fc_java_impl2, showfliers=False)
+  nome_boxplot = current_path + '/' + 'graficos' + '/'+ nome_repositorio + '/' + 'boxplot' + '/' + nome_repositorio + '_' + 'boxplot_frequencia_commmits_only_java_no_outliers_less_3.png'
+  titulo = f"{nome_repositorio} - FOC - Arquivos .java sem outliers <= 3"
+  plt.title(titulo)
+  plt.savefig(nome_boxplot)
+
+  return df_fc_java_impl, df_boxplot_fc_java_impl, df_boxplot_fc_java_impl2
+
+def calcula_quartiles_frequencia_commmits_java_impl(df_fc_java_impl, nome_repositorio):
+  fc_q1_java_impl = np.percentile(df_fc_java_impl.frequency_commits , [25])
+  fc_q2_java_impl = np.percentile(df_fc_java_impl.frequency_commits , [50])
+  fc_q3_java_impl = np.percentile(df_fc_java_impl.frequency_commits , [75])
+  fc_q4_java_impl = np.percentile(df_fc_java_impl.frequency_commits , [100])
+  print(f'Quartis da Frequencia de Commits Q1: {fc_q1_java_impl}, Q2: {fc_q2_java_impl}, Q3: {fc_q3_java_impl}, Q4: {fc_q4_java_impl}')
+
+  dict_temp = {
+    'fc_q1_java_impl': fc_q1_java_impl,'fc_q2_java_impl': fc_q2_java_impl,'fc_q3_java_impl': fc_q3_java_impl,'fc_q4_java_impl': fc_q4_java_impl
+  }
+  current_path = os.getcwd()
+  path_arquivo = current_path + '/' + 'quartis' + '/'+ nome_repositorio + '/' + nome_repositorio + "_" + 'quartiles_frequencia_commmits_java_impl.csv'
+  utilidades.export_csv_from_dict(dict_temp, path_arquivo)
+
+  return fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl
+
+def calcula_quartiles_frequencia_commmits_no_outliers(df_boxplot_fc_java_impl, nome_repositorio):
+  fc_q1_java_impl = np.percentile(df_boxplot_fc_java_impl.frequency_commits , [25])
+  fc_q2_java_impl = np.percentile(df_boxplot_fc_java_impl.frequency_commits , [50])
+  fc_q3_java_impl = np.percentile(df_boxplot_fc_java_impl.frequency_commits , [75])
+  fc_q4_java_impl = np.percentile(df_boxplot_fc_java_impl.frequency_commits , [100])
+  print(f'Quartis da Frequencia de Commits Q1: {fc_q1_java_impl}, Q2: {fc_q2_java_impl}, Q3: {fc_q3_java_impl}, Q4: {fc_q4_java_impl}')
+
+  dict_temp = {
+    'fc_q1_java_impl': fc_q1_java_impl,'fc_q2_java_impl': fc_q2_java_impl,'fc_q3_java_impl': fc_q3_java_impl,'fc_q4_java_impl': fc_q4_java_impl
+  }
+  current_path = os.getcwd()
+  path_arquivo = current_path + '/' + 'quartis' + '/'+ nome_repositorio + '/' + nome_repositorio + "_" + 'quartiles_frequencia_commmits_no_outliers.csv'
+  utilidades.export_csv_from_dict(dict_temp, path_arquivo)
+
+  return fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl
+
+def calcula_quartiles_frequencia_commmits_no_outliers_less_3(df_boxplot_fc_java_impl2, nome_repositorio):
+  fc_q1_java_impl = np.percentile(df_boxplot_fc_java_impl2.frequency_commits , [25])
+  fc_q2_java_impl = np.percentile(df_boxplot_fc_java_impl2.frequency_commits , [50])
+  fc_q3_java_impl = np.percentile(df_boxplot_fc_java_impl2.frequency_commits , [75])
+  fc_q4_java_impl = np.percentile(df_boxplot_fc_java_impl2.frequency_commits , [100])
+  print(f'Quartis da Frequencia de Commits Q1: {fc_q1_java_impl}, Q2: {fc_q2_java_impl}, Q3: {fc_q3_java_impl}, Q4: {fc_q4_java_impl}')
+
+  dict_temp = {
+    'fc_q1_java_impl': fc_q1_java_impl,'fc_q2_java_impl': fc_q2_java_impl,'fc_q3_java_impl': fc_q3_java_impl,'fc_q4_java_impl': fc_q4_java_impl
+  }
+  current_path = os.getcwd()
+  path_arquivo = current_path + '/' + 'quartis' + '/'+ nome_repositorio + '/' + nome_repositorio + "_" + 'quartiles_frequencia_commmits_no_outliers_less_3.csv'
+  utilidades.export_csv_from_dict(dict_temp, path_arquivo)
+
+  return fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl

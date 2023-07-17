@@ -1,5 +1,6 @@
 import requests
 import os
+import json
 
 def download_arquivo(url: str, nome: str):
     try:
@@ -38,18 +39,25 @@ def clona_repositorio(my_repositorio: str):
 
 def carrega_dependencias():
     print("Teste de análise de repositorios")
-    print('Faz o dowload das dependências...')
-
-    url1='https://raw.githubusercontent.com/mining-software-repositories/pilot3/main/requirements.txt'
-    nome1='requirements.txt'
-    url2='https://raw.githubusercontent.com/mining-software-repositories/pilot3/main/dao.py'
-    nome2='dao.py'
-    url3='https://raw.githubusercontent.com/mining-software-repositories/pilot3/main/utils.py'
-    nome3='utils.py'
-
-    download_arquivo(url=url1, nome=nome1)
-    download_arquivo(url=url2, nome=nome2)
-    download_arquivo(url=url3, nome=nome3)
-
+    print('Carrega dependências do projeto...')
     executa_comando(comando='pip3 install -r requirements.txt')
     print('Dependências instaladas com sucesso!')
+
+def convert_list_to_str(lista):
+    temp = ''
+    if len(lista) > 0:
+        temp = ','.join( str(v) for v in lista)
+    return temp
+
+def convert_modifield_list_to_str(lista):
+    list_aux = []
+    for each in lista:
+        list_aux.append(each.filename)
+    str = convert_list_to_str(list_aux)
+    return str
+
+def convert_dictionary_to_str(dictionary):
+    temp = ''
+    if len(dictionary) > 0:
+        temp = str(json.dumps(dictionary))
+    return temp

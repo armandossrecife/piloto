@@ -1,7 +1,6 @@
 import os
 import dao
 import pydriller
-import utils
 import datetime
 import utilidades
 
@@ -35,11 +34,11 @@ def extrai_informacoes_repositorio(my_repositorio, nome_repositorio):
                 author_timezone=commit.author_timezone,
                 committer_date=commit.committer_date,
                 committer_timezone=commit.committer_timezone,
-                branches=utils.convert_list_to_str(commit.branches),
+                branches=utilidades.convert_list_to_str(commit.branches),
                 in_main_branch=commit.in_main_branch,
                 merge=commit.merge,
-                modified_files=utils.convert_modifield_list_to_str(commit.modified_files),
-                parents=utils.convert_list_to_str(commit.parents),
+                modified_files=utilidades.convert_modifield_list_to_str(commit.modified_files),
+                parents=utilidades.convert_list_to_str(commit.parents),
                 project_name=commit.project_name,
                 project_path=commit.project_path,
                 deletions=commit.deletions,
@@ -65,14 +64,14 @@ def extrai_informacoes_repositorio(my_repositorio, nome_repositorio):
                                             is_java=utilidades.testa_extensao_java(file.filename),
                                             change_type=file.change_type.name,
                                             diff=str(file.diff),
-                                            diff_parsed=utils.convert_dictionary_to_str(file.diff_parsed),
+                                            diff_parsed=utilidades.convert_dictionary_to_str(file.diff_parsed),
                                             added_lines=file.added_lines,
                                             deleted_lines=file.deleted_lines,
                                             source_code=str(file.source_code),
                                             source_code_before=str(file.source_code_before),
-                                            methods=utils.convert_list_to_str(file.methods),
-                                            methods_before=utils.convert_list_to_str(file.methods_before),
-                                            changed_methods=utils.convert_list_to_str(file.changed_methods),
+                                            methods=utilidades.convert_list_to_str(file.methods),
+                                            methods_before=utilidades.convert_list_to_str(file.methods_before),
+                                            changed_methods=utilidades.convert_list_to_str(file.changed_methods),
                                             nloc=file.nloc,
                                             complexity=file.complexity,
                                             token_count=file.token_count,

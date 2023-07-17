@@ -1,0 +1,6 @@
+sqlalchemy
+pydriller
+pandas
+seaborn
+matplotlib
+numpy

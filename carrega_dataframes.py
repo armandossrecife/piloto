@@ -2,8 +2,6 @@
 import pandas as pd
 import sqlite3
 
-DATA_BASE='my_promocity.db'
-
 def load_dataframes(database_name):
     conexao_banco = sqlite3.connect(database_name)
 

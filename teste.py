@@ -1,8 +1,9 @@
+import os
 import utilidades
 import extracao
 import carrega_dataframes
 import analisa_metricas
-import os
+import scatter_plots
 
 DATA_BASE = "my_promocity.db"
 URL_REPOSITORIO_GIT = 'https://github.com/armandossrecife/promocity.git'
@@ -22,12 +23,16 @@ df_files_from_db['modified_lines'] = df_files_from_db.added_lines + df_files_fro
 df_files_commits_from_db['modified_lines'] = df_files_commits_from_db.file_added_lines + df_files_commits_from_db.file_deleted_lines
 print('Dataframes carregados com sucesso!')
 
-# Cria uma pasta com o nome do repositorio dentro da pasta graficos
+# Cria as pastas de graficos, quartis e criticos para o repositorio analisado
 current_path = os.getcwd()
 pasta_grafico_repositorio_boxplot = current_path + '/' + 'graficos' + '/'+ NOME_REPOSITORIO + '/' + 'boxplot'
+pasta_grafico_repositorio_scatter = current_path + '/' + 'graficos' + '/'+ NOME_REPOSITORIO + '/' + 'scatter'
 pasta_quartis_repositorio = current_path + '/' + 'quartis' + '/'+ NOME_REPOSITORIO
+pasta_criticos_repositorio = current_path + '/' + 'criticos' + '/'+ NOME_REPOSITORIO
 utilidades.create_folder(pasta_grafico_repositorio_boxplot)
+utilidades.create_folder(pasta_grafico_repositorio_scatter)
 utilidades.create_folder(pasta_quartis_repositorio)
+utilidades.create_folder(pasta_criticos_repositorio)
 
 # 4. Faz a analise das metricas de AMLOC
 print('Calcula o AMLOC')
@@ -70,3 +75,27 @@ fc_q1,fc_q2, fc_q3, fc_q4 = analisa_metricas.calcula_quartiles_frequencia_commit
 print('Gera o boxplot da FOC apenas dos arquivos .java')
 df_fc_java_impl, df_boxplot_fc_java_impl, df_boxplot_fc_java_impl2 = analisa_metricas.gera_boxplot_frequencia_commits_only_java(df_fc, NOME_REPOSITORIO)
 fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl = analisa_metricas.calcula_quartiles_frequencia_commmits_no_outliers_less_3(df_boxplot_fc_java_impl2, NOME_REPOSITORIO)
+
+# 7. Faz a juncao de AMOL e FOC para gerar os scatter plots
+print('Gera o scatter plot AMLOC e FOC')
+df_em_fc = scatter_plots.gera_df_foc_amloc(df_accumulated_modified_locs, df_fc)
+df_fator_multiplicacao = scatter_plots.gera_df_fator_foc_amloc(df_em_fc)
+df_em_fc_java_impl, df_fator_multiplicacao_em_fc_java_impl = scatter_plots.gera_scatter_plot_foc_amloc(df_em_fc, NOME_REPOSITORIO)
+print('Gera o scatter plot AMLOC e FOC com quadrantes')
+list_initial_critical_files_from_sp = scatter_plots.gera_scatter_plot_foc_amloc_com_quadrantes(df_em_fc_java_impl, em_q3_java_impl, fc_q3_java_impl, NOME_REPOSITORIO)
+list_critical_files = scatter_plots.gera_scatter_plot_final_foc_amloc_com_quadrantes(list_initial_critical_files_from_sp, df_em_fc_java_impl, em_q3_java_impl, fc_q2_java_impl, NOME_REPOSITORIO)
+print('Arquivos criticos: Alta AMLOC e Alta FOC')
+print(list_critical_files)
+current_path = os.getcwd()
+nome_arquivo_csv = current_path + '/' + 'criticos' + '/'+ NOME_REPOSITORIO + '/' + NOME_REPOSITORIO + '_' + 'arquivos_criticos.csv'
+nomes = []
+amlocs = []
+focs = [] 
+for each_tupla in list_critical_files:
+    nomes.append(each_tupla[0])
+    amlocs.append(each_tupla[1])
+    focs.append(each_tupla[2])
+dict_temp = {
+    'nome': nomes, 'amloc':amlocs, 'foc':focs
+}
+utilidades.export_csv_from_dict(dict_temp, nome_arquivo_csv)

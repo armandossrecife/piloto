@@ -1,0 +1,1 @@
+# Arquivos criticos com alta mudanca de LOC e alta frequencia de commits

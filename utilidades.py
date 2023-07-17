@@ -85,4 +85,13 @@ def export_csv_from_dict(data_dict, file_path):
         df = pd.DataFrame.from_dict(data_dict)
         df.to_csv(file_path, index=False)
     except Exception as ex:
-        print(f'Erro ao gerar o .csv: {str(ex)}')
+        print(f'Erro ao gerar o .csv {file_path}: {str(ex)}')
+
+def export_txt_from_list(lista, file_path):
+    try:
+        with open(file_path, mode='w') as f_temp:
+            for each in lista:
+                each = each + '\n'
+                f_temp.write(each)
+    except Exception as ex:
+        print(f'Erro ao gerar o arquivo .txt {file_path} : {str(ex)}')

@@ -4,6 +4,7 @@ import extracao
 import carrega_dataframes
 import analisa_metricas
 import scatter_plots
+import analise_dependencias_arquivos as ada
 
 DATA_BASE = "my_promocity.db"
 URL_REPOSITORIO_GIT = 'https://github.com/armandossrecife/promocity.git'
@@ -99,3 +100,72 @@ dict_temp = {
     'nome': nomes, 'amloc':amlocs, 'foc':focs
 }
 utilidades.export_csv_from_dict(dict_temp, nome_arquivo_csv)
+
+# 8. Analise de dependencias, co-change e arquivos impactados
+print('Faz a análise das dependências dos arquivos')
+path_projeto_src_java = "promocity/src/main/java/"
+
+# Faz a análise das dependências dos arquivos
+ada.gera_arquivos_java(path_projeto=path_projeto_src_java, nome_arquivo='arquivosjava.txt')
+# Cria a matriz de relacao entre os arquivos do projeto da pasta src
+lista_linhas_arquivos_cassandra, lista_colunas_arquivos_cassandra = ada.cria_duas_listas_arquivos_analisados(nome_arquivo='arquivosjava.txt', diretorio_src_main=path_projeto_src_java)
+# Gera dicionarios de dependencias entre os arquivos
+dicionario_dsm = ada.cria_dicionario_dsm(lista_linhas_arquivos_cassandra, lista_colunas_arquivos_cassandra, path_main=path_projeto_src_java)
+dicionario_dsm_depende_de = ada.cria_dicionario_dsm_depende_de(lista_linhas_arquivos_cassandra, lista_colunas_arquivos_cassandra, path_main=path_projeto_src_java)
+lista_arquivos_criticos = list_critical_files
+
+# arquivosjava.txt e dicionario_dsm
+ada.get_dict_file_a_uses_file_b(lista_arquivos_criticos, content='arquivosjava.txt', my_dictionary=dicionario_dsm, path_main=path_projeto_src_java)
+ada.get_dict_file_a_uses_file_b(lista_arquivos_criticos, content='arquivosjava.txt', my_dictionary=dicionario_dsm_depende_de, path_main=path_projeto_src_java)
+
+dict_arquivos_dependentes_arquivos_criticos, lista_arquivos_impactados, l_ac, l_adac, l_tamanho_adac = ada.mostra_lista_arquivos_dependentes(lista_arquivos_criticos, content='arquivosjava.txt', my_dictionary=dicionario_dsm_depende_de, path_main=path_projeto_src_java)
+df_arquivos_dependentes_arquivos_criticos = ada.gera_df_arquivos_dependentes_arquivos_criticos(l_ac, l_tamanho_adac, l_adac)
+
+lista_arquivos_impactados_unicos = ada.gera_lista_arquivos_impactados_unicos(dict_arquivos_dependentes_arquivos_criticos, lista_arquivos_impactados)
+print(f'Arquivos impactados unicos: {lista_arquivos_impactados_unicos}')
+lista_nomes_arquivos_impactados_unicos, df_qtd_lm, dict_modified_lines_arquivos_criticos, soma_modified_lines_arquivos_criticos = ada.relatorio_linhas_alteradas_pelas_classes_criticas(lista_arquivos_impactados_unicos,lista_arquivos_criticos, df_em_fc_java_impl, df_files_commits_from_db)
+
+print('Testes de impacto de mudancas')
+# Quantidade de linhas modificadas dos arquivos impactados
+dict_modified_lines_arquivos_impactados = {}
+
+for each in lista_nomes_arquivos_impactados_unicos:
+  qtd_temp = df_qtd_lm[df_qtd_lm.file_filename == each]['modified_lines'].to_list()
+  if len(qtd_temp) == 1:
+    dict_modified_lines_arquivos_impactados[each] = qtd_temp[0]
+  else:
+    dict_modified_lines_arquivos_impactados[each] = 0
+
+soma_modified_lines_arquivos_impactados = 0
+for key, value in dict_modified_lines_arquivos_impactados.items():
+  soma_modified_lines_arquivos_impactados = soma_modified_lines_arquivos_impactados + value
+
+print(f'As {len(dict_modified_lines_arquivos_impactados)} classes impactadas, pelos arquivos críticos, mudaram {soma_modified_lines_arquivos_impactados} linhas no sistema')
+
+## Soma de todas as linhas modificadas pelos arquivos .java
+qtd_arquivos_java = df_qtd_lm.shape[0]
+qtd_modified_lines_arquivos_java = df_qtd_lm['modified_lines'].sum()
+
+print(f'{qtd_arquivos_java} arquivos mudaram {qtd_modified_lines_arquivos_java} LOC no sistema')
+
+# As classes críticas e as classes impactada correspondem a X linhas modificadas
+# o que dá P % de linhas modificadas no sistema
+
+soma_modified_lines_analisadas = soma_modified_lines_arquivos_criticos + soma_modified_lines_arquivos_impactados
+
+percentual_modified_lines_analisadas = round( (soma_modified_lines_analisadas/qtd_modified_lines_arquivos_java) * 100 , 2)
+
+print(f'As {len(dict_modified_lines_arquivos_criticos)} classes criticas e as {len(dict_modified_lines_arquivos_impactados)} classes impactadas correspondem a {percentual_modified_lines_analisadas}% das linhas modificadas no sistema')
+
+# Dataframe contendo todos os commits da faixa analisada
+df = df_commits_from_db[['name', 'modified_files']]
+
+# Lista arquivos críticos
+print(f'{len(lista_arquivos_criticos)}, {lista_arquivos_criticos}')
+
+# Arquivos impactados únicos
+print(f' {len(lista_arquivos_impactados_unicos)}, {lista_arquivos_impactados_unicos}')
+
+# Dicionário com o arquivo crítico e todos os seus arquivos co-change (além dos arquivos de implementação existem os arquivos .txt, de configuração, testes, entre outros)
+dict_arquivo_critico_cochange = ada.get_dict_arquivos_modificados_with_critico(lista_arquivos_criticos, df)
+print(f'{len(dict_arquivo_critico_cochange)}')

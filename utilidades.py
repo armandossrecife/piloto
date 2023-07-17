@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+import pandas as pd
 
 def download_arquivo(url: str, nome: str):
     try:
@@ -61,3 +62,27 @@ def convert_dictionary_to_str(dictionary):
     if len(dictionary) > 0:
         temp = str(json.dumps(dictionary))
     return temp
+
+def create_folder(folder_path):
+    '''
+    # Usage example
+    folder_path = "/path/to/folder"
+    create_folder(folder_path)
+    '''
+    try: 
+        # Check if folder exists
+        if os.path.exists(folder_path):
+            # Remove folder if it exists
+            os.rmdir(folder_path)
+
+        # Create the folder
+        os.makedirs(folder_path)
+    except Exception as ex:
+        print(f'Erro ao criar a pasta {folder_path}: {str(ex)}')
+
+def export_csv_from_dict(data_dict, file_path):
+    try:
+        df = pd.DataFrame.from_dict(data_dict)
+        df.to_csv(file_path, index=False)
+    except Exception as ex:
+        print(f'Erro ao gerar o .csv: {str(ex)}')

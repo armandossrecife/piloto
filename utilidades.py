@@ -95,3 +95,20 @@ def export_txt_from_list(lista, file_path):
                 f_temp.write(each)
     except Exception as ex:
         print(f'Erro ao gerar o arquivo .txt {file_path} : {str(ex)}')
+
+# Retorna um dicionario onde a chave eh um commit e o valor eh uma lista com os arquivos modificados desse commit em uma lista
+def dictionary_commits_from_tags_A_B(diretorio_repositorio, tag_a, tag_b):
+    os.chdir(diretorio_repositorio)
+    faixa = tag_a + '..' + tag_b
+    cmd1 = ["git", "log", "--format='%H'", faixa]
+    output1 = subprocess.check_output(cmd1).decode("utf-8")
+    commits = output1.splitlines()
+    dictionary_commits = {}
+    # Analisar os arquivos modificados em cada commit
+    for commit in commits:
+        commit = commit.replace("'", "")
+        cmd2 = ["git", "diff","--name-only",commit]
+        output2 = subprocess.check_output(cmd2).decode("utf-8")
+        output2 = output2.split('\n')
+        dictionary_commits[commit] = output2
+    return dictionary_commits

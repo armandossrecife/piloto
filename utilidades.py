@@ -2,6 +2,7 @@ import requests
 import os
 import json
 import pandas as pd
+import subprocess
 
 def download_arquivo(url: str, nome: str):
     try:

@@ -12,3 +12,7 @@ Initial tests
 ## Phase 3
 
 [Calculating quartiles and selecting critical files](https://github.com/armandossrecife/piloto/blob/main/docs/diagramas/p3.png)
+
+## Phase 4
+
+[Selecting critial classes](https://github.com/armandossrecife/piloto/blob/main/docs/diagramas/p4.png)

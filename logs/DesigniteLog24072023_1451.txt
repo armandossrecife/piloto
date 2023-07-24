@@ -1,0 +1,4 @@
+DesigniteJava Enterprise. Version 9.0.0.5
+Copyright (C) 2023 Designite. All rights reserved.
+License registered successfully.
+Total time (sec): 2

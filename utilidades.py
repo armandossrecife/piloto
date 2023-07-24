@@ -3,6 +3,8 @@ import os
 import json
 import pandas as pd
 import subprocess
+import requests
+import re
 
 def download_arquivo(url: str, nome: str):
     try:
@@ -113,3 +115,115 @@ def dictionary_commits_from_tags_A_B(diretorio_repositorio, tag_a, tag_b):
         output2 = output2.split('\n')
         dictionary_commits[commit] = output2
     return dictionary_commits
+
+def checa_indice_language(relacao_linguagens):
+  indice=-1
+  for i, each in enumerate(relacao_linguagens):
+    if "Language" in each:
+      indice = i
+      break
+  return indice
+
+def instala_cloc():
+  try:
+    comando = f'sudo apt-get install cloc'
+    os.system(comando)
+    print(comando)
+  except Exception as e:
+    print(f'Erro: {str(e)}')
+
+def instala_tree():
+  try:
+    comando = f'sudo apt install tree'
+    os.system(comando)
+  except Exception as ex:
+    print(f'Erro ao instalar o comando tree: {str(ex)}')
+
+def get_primeiro_commit(repositorio):
+  try:
+    saida = ''
+    os.environ['REPOSITORIO_ORIGINAL'] = repositorio
+    REPOSITORIO_ORIGINAL = os.environ['REPOSITORIO_ORIGINAL']
+    # Primeiro commit
+    comando = f'cd {REPOSITORIO_ORIGINAL} && git rev-list --all | tail -n 1'
+    result = subprocess.run(comando, shell=True, capture_output=True, text=True)
+
+    if result.returncode == 0:
+        saida = result.stdout
+        saida = saida.replace('\n', '')
+    else:
+        print(comando)
+        print("get_primeiro_commit - Ocorreu um erro ao executar o comando:")
+        saida = result.stderr
+  except Exception as e:
+    print(f'Erro: {str(e)}')
+  return saida
+
+def get_commit_tag(tag, repositorio):
+  try:
+    saida = ''
+    os.environ['TAG'] = tag
+    TAG = os.environ['TAG']
+    os.environ['REPOSITORIO_ORIGINAL'] = repositorio
+    REPOSITORIO_ORIGINAL = os.environ['REPOSITORIO_ORIGINAL']
+    comando = f'cd {REPOSITORIO_ORIGINAL} && git rev-list -n 1 {TAG}'
+    result = subprocess.run(comando, shell=True, capture_output=True, text=True)
+    if result.returncode == 0:
+        saida = result.stdout
+        saida = saida.replace('\n', '')
+    else:
+        print(comando)
+        print("get_commit_tag - Ocorreu um erro ao executar o comando:")
+        saida = result.stderr
+  except Exception as e:
+    print(f'Erro: {str(e)}')
+  return saida
+
+def get_ultimo_commit(repositorio):
+  try:
+    os.environ['REPOSITORIO_ORIGINAL'] = repositorio
+    REPOSITORIO_ORIGINAL = os.environ['REPOSITORIO_ORIGINAL']
+    # ultimo commit
+    comando = f'cd {REPOSITORIO_ORIGINAL} && git rev-list --all | head -n 1'
+    result = subprocess.run(comando, shell=True, capture_output=True, text=True)
+    if result.returncode == 0:
+        saida = result.stdout
+        saida = saida.replace('\n', '')
+    else:
+        print(comando)
+        print("get_ultimo_commit - Ocorreu um erro ao executar o comando:")
+        saida = result.stderr
+  except Exception as e:
+    print(f'Erro: {str(e)}')
+  return saida
+
+def cria_pasta_n_commit(repositorio, pasta_n_commit):
+  try:
+    os.environ['REPOSITORIO_ORIGINAL'] = repositorio
+    REPOSITORIO_ORIGINAL = os.environ['REPOSITORIO_ORIGINAL']
+    os.environ['REPOSITORIO_INICIAL'] = pasta_n_commit
+    REPOSITORIO_INICIAL = os.environ['REPOSITORIO_INICIAL']
+    # Cria uma nova pasta para referenciar apenas os dados do 1o commit
+    comando = f'cp -R {REPOSITORIO_ORIGINAL} {REPOSITORIO_INICIAL}'
+    result = subprocess.run(comando, shell=True, capture_output=True, text=True)
+    if result.returncode == 0:
+        saida = result.stdout
+        saida = saida.replace('\n', '')
+    else:
+        print(comando)
+        print("cria_pasta_n_commit - Ocorreu um erro ao executar o comando:")
+        saida = result.stderr
+  except Exception as e:
+    print(f'Erro: {str(e)}')
+  return saida
+
+def is_valid_url(url):
+    try:
+        response = requests.head(url)
+        return response.status_code in range(200, 300)  # Check if status code is in the 2xx range
+    except requests.exceptions.RequestException:
+        return False  # Any error or exception indicates an invalid or non-existent URL
+
+def get_elements_with_pattern(strings_list, pattern):
+    matching_elements = [s for s in strings_list if re.search(pattern, s)]
+    return matching_elements

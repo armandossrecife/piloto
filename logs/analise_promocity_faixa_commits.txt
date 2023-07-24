@@ -1,0 +1,131 @@
+1. Instala dependências
+Dependências instaladas com sucesso!
+
+2. Clona o repositório
+Clona repositório https://github.com/armandossrecife/promocity.git
+Cloning into 'promocity'...
+remote: Enumerating objects: 844, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (31/31), done.
+remote: Total 844 (delta 11), reused 24 (delta 3), pack-reused 798
+Receiving objects: 100% (844/844), 4.00 MiB | 1.29 MiB/s, done.
+Resolving deltas: 100% (325/325), done.
+Repositorio clonado com sucesso!
+
+3. Pega o commit inicial e o commit final 
+commit_inicial: e3b8141b1e905e8230ce791e16e3d3abb8b619c6, commit_final: c6e94e147203f52ef29b077f8c08d6bf5bc44a68
+
+4. Analisa os commits e arquivos modificados em cada commit e salva em um banco de dados
+Cria a sessão de banco de dados
+Cria as tabelas do banco
+Tabelas criadas com sucesso!
+Analisa commits e arquivos modificados do repositorio promocity. Aguarde...
+Sessão de banco de dados fechada!
+Quantidade de commits analisados: 91
+Tempo de análise: 0:00:16.781684
+
+5. Carrega os dados do banco de dados em dataframes para facilitar a análise dos commits e arquivos modificados
+Carrega os dados nos dataframes
+Dataframes carregados com sucesso!
+   file_id                          file_hash_commit file_description  file_is_java           file_created_date  ... files dmm_unit_size dmm_unit_complexity dmm_unit_interfacing modified_lines
+0        1  e3b8141b1e905e8230ce791e16e3d3abb8b619c6             None             0  2023-07-24 17:22:07.092597  ...     1           NaN                 NaN                  NaN              2
+1        2  fc85e473f543f543c68110d62624180fc3b24606             None             0  2023-07-24 17:22:07.092597  ...    30      0.908911            0.946535             0.928713             62
+2        3  fc85e473f543f543c68110d62624180fc3b24606             None             1  2023-07-24 17:22:07.092597  ...    30      0.908911            0.946535             0.928713             17
+
+[3 rows x 44 columns]
+     file_id                          file_hash_commit file_description  file_is_java  ... dmm_unit_size dmm_unit_complexity dmm_unit_interfacing modified_lines
+228      229  5c6f6d9f189adb74b0c692f6100d9b4bfb3b4c36             None             0  ...           NaN                 NaN                  NaN              6
+229      230  ceb629b75c9c0db2c4feff1d2bd135ce88d6245a             None             0  ...           NaN                 NaN                  NaN              2
+230      231  c6e94e147203f52ef29b077f8c08d6bf5bc44a68             None             0  ...           NaN                 NaN                  NaN              0
+
+[3 rows x 44 columns]
+
+6. Cálculo do AMLOC
+Calcula o AMLOC
+Gera o boxplot de AMLOC de todos os arquivos do repositório
+Gera o boxplot de AMLOC
+Calcula os quartiles de AMLOC
+Qtd list_of_files_modified_lines: 1
+Quartis do Total de Linhas Modificadas: Q1: [17.], Q2: [35.5], Q3: [120.75], Q4: [6736.]
+Calcula o AMLOC dos arquivos .java
+Gera o boxplot de AMLOC dos arquivos .java
+Calcula o AMLOC dos arquivos .java (Válidos - arquivos que modificaram pelo menos uma vez)
+Calcula os quartiles referente ao AMLOC dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [20.], Q2: [37.5], Q3: [120.75], Q4: [963.]
+
+7. Cálculo da Complexidade Ciclomática
+Calculo da Complexidade Ciclomatica
+               file_filename  file_complexity                 author_date
+60        AbstractModel.java             11.0  2018-11-02 16:57:10.000000
+100       AbstractModel.java             11.0  2018-11-13 12:19:15.000000
+64      AbstractService.java              7.0  2018-11-02 16:57:10.000000
+2    BackendApplication.java              1.0  2018-10-31 00:40:14.000000
+38   BackendApplication.java              1.0  2018-11-01 19:24:13.000000
+..                       ...              ...                         ...
+123     UsersRepository.java              0.0  2018-11-21 19:41:29.000000
+66         UsersService.java              1.0  2018-11-02 16:57:10.000000
+125        UsersService.java              3.0  2018-11-21 19:41:29.000000
+124   WebSecurityConfig.java              1.0  2018-11-21 19:41:29.000000
+214   WebSecurityConfig.java              1.0  2018-12-05 15:26:10.000000
+
+[162 rows x 3 columns]
+Calcula o boxplot de complexidade ciclomática
+Calcula os quartiles das complexidades ciclomáticas
+Quartis do Total de Linhas Modificadas: Q1: [2.], Q2: [10.], Q3: [19.5], Q4: [59.]
+Calcula a complexidade ciclomática apenas dos arquivos .java
+Calcula os quartiles de complexidade ciclomática dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [2.], Q2: [10.], Q3: [20.], Q4: [59.]
+
+8. Cálculo da Frequência de commits
+Calcula frequencia dos commits
+Quantidade de grupos: 91
+
+list_of_files_frequency_in_commits: 91
+Gera o boxplot da frequencia de commits
+Calcula os quartiles das frequencias de commits
+Quartis da Frequencia de Commits Q1: [1.], Q2: [1.], Q3: [2.], Q4: [22.]
+Gera o boxplot da FOC apenas dos arquivos .java
+Quartis da Frequencia de Commits Q1: [3.25], Q2: [5.], Q3: [10.25], Q4: [22.]
+
+9. Gera os scatter plost AMLOC e FOC
+Gera o scatter plot AMLOC e FOC
+Gera o scatter plot AMLOC e FOC com quadrantes
+
+10. Seleciona os potenciais arquivos críticos
+Arquivos criticos: Alta AMLOC e Alta FOC
+[('StoreController.java', 439, 11), ('UserController.java', 963, 22), ('UserLocationMonitoring.java', 316, 11), ('Users.java', 350, 11)]
+
+11. Cria a Matriz de dependência entre todos os arquivos java
+Faz a análise das dependências dos arquivos
+Arquivo arquivosjava.txt gerado com sucesso!
+Tempo para criar o dicionarário dsm: 0:00:00.282626, itens percorridos: 60
+Tempo para criar o dicionarário dsm: 0:00:00.253542, itens percorridos: 60
+
+12. Faz a análise das potenciais classes críticas
+.ufc.cmu.promocity.backend.controller.StoreController.java []
+.ufc.cmu.promocity.backend.controller.UserController.java []
+.ufc.cmu.promocity.backend.context.UserLocationMonitoring.java []
+.ufc.cmu.promocity.backend.model.Users.java []
+Mudanças na classe .ufc.cmu.promocity.backend.controller.StoreController.java podem impactar 0 classes
+Mudanças na classe .ufc.cmu.promocity.backend.controller.UserController.java podem impactar 0 classes
+Mudanças na classe .ufc.cmu.promocity.backend.context.UserLocationMonitoring.java podem impactar 0 classes
+Mudanças na classe .ufc.cmu.promocity.backend.model.Users.java podem impactar 0 classes
+
+13. Faz a análise de classes impactadas pelas classes críticas
+Arquivos impactados unicos: []
+Existem 0 classes que podem ser impactados pelas 4 classes críticas.
+Classes críticas: 4
+Classes impactadas: 0
+
+14. Faz o resumo dos impactos das classes críticas e classes dependentes
+Total de classes .java do sistema: 64
+Existem 4 arquivos: ['StoreController.java', 'UserController.java', 'UserLocationMonitoring.java', 'Users.java'] que podem impactar 0 dos 64 arquivos .java
+0 Potenciais arquivos impactados: []
+As 4 classes criticas mudaram 2068 linhas no sistema
+
+15. Faz a análise do impacto de mudanças das classes críticas e classes dependentes em relação aos demais arquivos do repositório
+Testes de impacto de mudancas
+As 0 classes impactadas, pelos arquivos críticos, mudaram 0 linhas no sistema
+65 arquivos mudaram 6399 LOC no sistema
+As 4 classes criticas e as 0 classes impactadas correspondem a 32.32% das linhas modificadas no sistema
+4, [('StoreController.java', 439, 11), ('UserController.java', 963, 22), ('UserLocationMonitoring.java', 316, 11), ('Users.java', 350, 11)]

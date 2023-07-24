@@ -10,19 +10,29 @@ DATA_BASE = "my_promocity.db"
 URL_REPOSITORIO_GIT = 'https://github.com/armandossrecife/promocity.git'
 NOME_REPOSITORIO = 'promocity'
 
-# 1. Carrega dependencias
+# --- 1. Carrega dependencias ---
 utilidades.carrega_dependencias()
 
-# 2. Extrai informacoes de commits e arquivos modificados em cada commmit
-extracao.extrai_informacoes_repositorio(my_repositorio=URL_REPOSITORIO_GIT, nome_repositorio=NOME_REPOSITORIO)
+# clona o repositorio para permitir a analise
+utilidades.clona_repositorio(my_repositorio=URL_REPOSITORIO_GIT)
 
-# 3. Carrega os dados das tabelas em dataframes
+# Detalhes da faixa de commits que sera analisada
+COMMIT_INICIAL = utilidades.get_primeiro_commit(repositorio=NOME_REPOSITORIO)
+COMMIT_FINAL = utilidades.get_ultimo_commit(repositorio=NOME_REPOSITORIO)
+print(f'commit_inicial: {COMMIT_INICIAL}, commit_final: {COMMIT_FINAL}')
+
+# --- 2. Extrai informacoes de commits (inicial, final) e arquivos modificados em cada commmit ---
+extracao.extrai_informacoes_repositorio_by_commits(my_repositorio=URL_REPOSITORIO_GIT, nome_repositorio=NOME_REPOSITORIO, commit_inicial=COMMIT_INICIAL, commit_final=COMMIT_FINAL)
+
+# --- 3. Carrega os dados das tabelas em dataframes ---
 print('Carrega os dados nos dataframes')
 df_commits_from_db, df_files_from_db, df_files_commits_from_db = carrega_dataframes.load_dataframes(database_name=DATA_BASE)
 # 3.1 Faz alguns ajustes nos dataframes para o calculo de AMLOC
 df_files_from_db['modified_lines'] = df_files_from_db.added_lines + df_files_from_db.deleted_lines
 df_files_commits_from_db['modified_lines'] = df_files_commits_from_db.file_added_lines + df_files_commits_from_db.file_deleted_lines
 print('Dataframes carregados com sucesso!')
+print(df_files_commits_from_db.head(3))
+print(df_files_commits_from_db.tail(3))
 
 # Cria as pastas de graficos, quartis e criticos para o repositorio analisado
 current_path = os.getcwd()
@@ -35,7 +45,7 @@ utilidades.create_folder(pasta_grafico_repositorio_scatter)
 utilidades.create_folder(pasta_quartis_repositorio)
 utilidades.create_folder(pasta_criticos_repositorio)
 
-# 4. Faz a analise das metricas de AMLOC
+# --- 4. Faz a analise das metricas de AMLOC ---
 print('Calcula o AMLOC')
 df_accumulated_modified_locs, df_accumulated_modified_locs_boxplot, group_files_modified_lines = analisa_metricas.get_accumulated_modified_locs(df_files_from_db)
 print('Gera o boxplot de AMLOC de todos os arquivos do repositório')
@@ -53,7 +63,7 @@ df_boxplot_em_java_impl_valid = analisa_metricas.get_accumulated_modified_java_f
 print('Calcula os quartiles referente ao AMLOC dos arquivos .java')
 em_q1_java_impl, em_q2_java_impl, em_q3_java_impl, em_q4_java_impl = analisa_metricas.get_quartiles_offiles_modified_lines_java_files_valid(df_boxplot_em_java_impl_valid, NOME_REPOSITORIO)
 
-# 5. Faz a analise das metricas de Complexidade Ciclomatica
+# --- 5. Faz a analise das metricas de Complexidade Ciclomatica ---
 print('Calculo da Complexidade Ciclomatica')
 df_complexidade_ciclomatica = analisa_metricas.get_complexidade_ciclomatica(df_files_commits_from_db)
 print(df_complexidade_ciclomatica)
@@ -66,7 +76,7 @@ df_cc_temp_java_impl, df_cc_temp_boxplot_em_java_impl = analisa_metricas.get_box
 print('Calcula os quartiles de complexidade ciclomática dos arquivos .java')
 em_q1_cc_temp_java_impl, em_q2_cc_temp_java_impl, em_q3_cc_temp_java_impl, em_q4_cc_temp_java_impl= analisa_metricas.get_quartiles_complexidade_ciclomatica_java_impl(df_cc_temp_boxplot_em_java_impl, NOME_REPOSITORIO)
 
-# 6. Faz a analise de FOCs (frequencia dos commits)
+# --- 6. Faz a analise de FOCs (frequencia dos commits) ---
 print('Calcula frequencia dos commits')
 df_fc, df_boxplot_fc = analisa_metricas.calcula_frequencia_commits(df_files_from_db)
 print('Gera o boxplot da frequencia de commits')
@@ -77,7 +87,7 @@ print('Gera o boxplot da FOC apenas dos arquivos .java')
 df_fc_java_impl, df_boxplot_fc_java_impl, df_boxplot_fc_java_impl2 = analisa_metricas.gera_boxplot_frequencia_commits_only_java(df_fc, NOME_REPOSITORIO)
 fc_q1_java_impl, fc_q2_java_impl, fc_q3_java_impl, fc_q4_java_impl = analisa_metricas.calcula_quartiles_frequencia_commmits_no_outliers_less_3(df_boxplot_fc_java_impl2, NOME_REPOSITORIO)
 
-# 7. Faz a juncao de AMOL e FOC para gerar os scatter plots
+# --- 7. Faz a juncao de AMOL e FOC para gerar os scatter plots ---
 print('Gera o scatter plot AMLOC e FOC')
 df_em_fc = scatter_plots.gera_df_foc_amloc(df_accumulated_modified_locs, df_fc)
 df_fator_multiplicacao = scatter_plots.gera_df_fator_foc_amloc(df_em_fc)
@@ -101,7 +111,7 @@ dict_temp = {
 }
 utilidades.export_csv_from_dict(dict_temp, nome_arquivo_csv)
 
-# 8. Analise de dependencias, co-change e arquivos impactados
+# --- 8. Analise de dependencias, co-change e arquivos impactados ---
 print('Faz a análise das dependências dos arquivos')
 path_projeto_src_java = "promocity/src/main/java/"
 

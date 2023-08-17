@@ -1,0 +1,5 @@
+categoria,nome,repositorio,url,src,checa
+Data storage and management,cassandra,repositorio1,https://github.com/apache/cassandra.git,src/java,True
+Message broker,kafka,repositorio2,https://github.com/apache/kafka.git,core/src/main/java/kafka,True
+Web engines and web tool,spring-boot,repositorio3,https://github.com/spring-projects/spring-boot.git,spring-boot-project/spring-boot/src/main/java/org/springframework/boot,True
+Search engines,elasticsearch,repositorio4,https://github.com/elastic/elasticsearch.git,server/src/main/java/org/elasticsearch,True

@@ -1,6 +1,6 @@
 # Comparing with other works
 
-An Approach to Identify Source Code Files Impacted by Architectural Technical Debt (ATD) using our method and comparing with existing methods Sas et al. 2022 (https://onlinelibrary.wiley.com/doi/full/10.1002/smr.2398) and Tsoukalas et al. 2023 (https://onlinelibrary.wiley.com/doi/full/10.1002/smr.2564), already Validated by the scientific community. Below is the detailed overview of our research design:
+An Approach to Identify Source Code Files Impacted by Architectural Technical Debt (ATD) using our method and comparing with existing methods Sas et al. 2022 (https://onlinelibrary.wiley.com/doi/full/10.1002/smr.2398) and Tsoukalas et al. 2023 (https://onlinelibrary.wiley.com/doi/full/10.1002/smr.2564), already Validated by the scientific community. Below is the detailed overview of our plan:
 
 ![Planning](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/ATDCodeAnalyzer.png "Planning to compare with other works")
 

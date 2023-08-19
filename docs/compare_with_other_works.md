@@ -40,6 +40,8 @@ The outcome of our tests on the Guava repository is a set of critical files affe
 
 ## 2. Comparison of Results from the proposed method and Sas et al. 2022
 
+More details in [analise_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/analise_sas2022.ipynb)
+
 ### 2.1 (iii) Comparison with Sas et al. 2022:
 
 2.1.1 We compared the critical source code files identified by our method with the files impacted by Architectural Smells (Cyclic Dependency and Hub-like Dependency) identified in Sas et al. 2022's work.

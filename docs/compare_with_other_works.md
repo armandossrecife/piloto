@@ -6,7 +6,7 @@ An Approach to Identify Source Code Files Impacted by Architectural Technical De
 
 ## 1. The Proposed Method
 
-### 1.1 (i) Identification of ATD-Impacted cource code files using change analysis and code metrics:
+### 1.1 (i) Identification of ATD-Impacted source code files using change analysis and code metrics:
 
 Our method is divided into five phases:
 

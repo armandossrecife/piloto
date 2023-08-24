@@ -1,0 +1,77 @@
+Dependências instaladas com sucesso!
+Clona repositório https://github.com/apache/activemq.git
+Cloning into 'activemq'...
+remote: Enumerating objects: 232708, done.
+remote: Counting objects: 100% (1084/1084), done.
+remote: Compressing objects: 100% (527/527), done.
+remote: Total 232708 (delta 523), reused 952 (delta 459), pack-reused 231624
+Receiving objects: 100% (232708/232708), 59.13 MiB | 22.02 MiB/s, done.
+Resolving deltas: 100% (112167/112167), done.
+Repositorio clonado com sucesso!
+commit_inicial: ed3c600e09a305c39d78089cc5450d1e4a671f7b, commit_final: 8d322df244a6b4d8239f3b24608851eea6cf45ac
+Cria a sessão de banco de dados
+Cria as tabelas do banco
+Tabelas criadas com sucesso!
+Analisa commits e arquivos modificados do repositorio activemq. Aguarde...
+Sessão de banco de dados fechada!
+Quantidade de commits analisados: 1000
+Tempo de análise: 0:06:35.834856
+Carrega os dados nos dataframes
+Dataframes carregados com sucesso!
+   file_id                          file_hash_commit file_description  file_is_java  ... dmm_unit_size dmm_unit_complexity dmm_unit_interfacing modified_lines
+0        1  a944187d6ead71b3dfd856c5c4a3b418b8b85255             None             0  ...           NaN                 NaN                  NaN              2
+1        2  d943d7ab4c3c19f8c7a9723e9c281f66db5ae4ec             None             0  ...           NaN                 NaN                  NaN              2
+2        3  cf220b62a674d2bdea08ff931a086448106fdbd3             None             0  ...           NaN                 NaN                  NaN              2
+
+[3 rows x 44 columns]
+      file_id                          file_hash_commit file_description  file_is_java  ... dmm_unit_size dmm_unit_complexity dmm_unit_interfacing modified_lines
+2552     2553  8d322df244a6b4d8239f3b24608851eea6cf45ac             None             0  ...           NaN                 NaN                  NaN              2
+2553     2554  8d322df244a6b4d8239f3b24608851eea6cf45ac             None             0  ...           NaN                 NaN                  NaN              2
+2554     2555  8d322df244a6b4d8239f3b24608851eea6cf45ac             None             0  ...           NaN                 NaN                  NaN              2
+
+[3 rows x 44 columns]
+Calcula o AMLOC
+Gera o boxplot de AMLOC de todos os arquivos do repositório
+Gera o boxplot de AMLOC
+Calcula os quartiles de AMLOC
+Qtd list_of_files_modified_lines: 1
+Quartis do Total de Linhas Modificadas: Q1: [6.], Q2: [32.], Q3: [87.], Q4: [15862.]
+Calcula o AMLOC dos arquivos .java
+Gera o boxplot de AMLOC dos arquivos .java
+Calcula o AMLOC dos arquivos .java (Válidos - arquivos que modificaram pelo menos uma vez)
+Calcula os quartiles referente ao AMLOC dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [5.], Q2: [24.5], Q3: [66.], Q4: [830.]
+Calculo da Complexidade Ciclomatica
+                file_filename  file_complexity                 author_date
+1705         AMQ1925Test.java             40.0  2022-03-02 09:13:55.000000
+1679         AMQ1936Test.java             40.0  2022-03-02 09:13:55.000000
+978          AMQ2149Test.java             80.0  2021-03-12 08:53:53.000000
+979          AMQ2584Test.java             20.0  2021-03-12 08:53:53.000000
+2120         AMQ2801Test.java             13.0  2023-01-11 06:21:21.000000
+...                       ...              ...                         ...
+1486             portfolio.js             13.0  2022-02-09 21:26:39.000000
+2151             prototype.js           1666.0  2023-02-06 21:43:59.000000
+2152             prototype.js           1666.0  2023-02-06 21:43:59.000000
+107              publisher.py              0.0  2020-03-21 14:44:41.000000
+175   regexMatchFunction.java             10.0  2020-05-17 11:38:05.000000
+
+[917 rows x 3 columns]
+Calcula o boxplot de complexidade ciclomática
+Calcula os quartiles das complexidades ciclomáticas
+Quartis do Total de Linhas Modificadas: Q1: [12.], Q2: [27.], Q3: [75.], Q4: [1666.]
+Calcula a complexidade ciclomática apenas dos arquivos .java
+Calcula os quartiles de complexidade ciclomática dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [18.], Q2: [51.], Q3: [144.25], Q4: [748.]
+Calcula frequencia dos commits
+Quantidade de grupos: 969
+
+list_of_files_frequency_in_commits: 969
+Gera o boxplot da frequencia de commits
+Calcula os quartiles das frequencias de commits
+Quartis da Frequencia de Commits Q1: [1.], Q2: [1.], Q3: [1.], Q4: [1042.]
+Gera o boxplot da FOC apenas dos arquivos .java
+Quartis da Frequencia de Commits Q1: [3.], Q2: [4.], Q3: [6.], Q4: [10.]
+Gera o scatter plot AMLOC e FOC
+Gera o scatter plot AMLOC e FOC com quadrantes
+Arquivos criticos: Alta AMLOC e Alta FOC
+[('BrokerService.java', 292, 8), ('DemandForwardingBridgeSupport.java', 300, 8), ('MessageDatabase.java', 170, 10), ('Queue.java', 72, 9), ('TopicSubscription.java', 103, 9), ('TransportConnector.java', 80, 10)]

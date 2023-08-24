@@ -1,0 +1,68 @@
+Repositorio clonado com sucesso!
+commit_inicial: 8fa9a12cf5c84e338c4019ffd8f44d476f9e90b2, commit_final: f39084a064fe77ab6f0fe61131428ca5cd06a465
+Cria a sessão de banco de dados
+Cria as tabelas do banco
+Tabelas criadas com sucesso!
+Analisa commits e arquivos modificados do repositorio guava. Aguarde...
+Sessão de banco de dados fechada!
+Quantidade de commits analisados: 1000
+Tempo de análise: 0:28:25.521446
+Carrega os dados nos dataframes
+Dataframes carregados com sucesso!
+   file_id                          file_hash_commit file_description  ...  dmm_unit_complexity dmm_unit_interfacing modified_lines
+0        1  8fa9a12cf5c84e338c4019ffd8f44d476f9e90b2             None  ...                  NaN                  NaN              6
+1        2  8fa9a12cf5c84e338c4019ffd8f44d476f9e90b2             None  ...                  NaN                  NaN              3
+2        3  8fa9a12cf5c84e338c4019ffd8f44d476f9e90b2             None  ...                  NaN                  NaN              6
+
+[3 rows x 44 columns]
+      file_id                          file_hash_commit  ... dmm_unit_interfacing  modified_lines
+8120     8121  f39084a064fe77ab6f0fe61131428ca5cd06a465  ...             0.478261              16
+8121     8122  f39084a064fe77ab6f0fe61131428ca5cd06a465  ...             0.478261              17
+8122     8123  f39084a064fe77ab6f0fe61131428ca5cd06a465  ...             0.478261               2
+
+[3 rows x 44 columns]
+Calcula o AMLOC
+Gera o boxplot de AMLOC de todos os arquivos do repositório
+Gera o boxplot de AMLOC
+Calcula os quartiles de AMLOC
+Qtd list_of_files_modified_lines: 1
+Quartis do Total de Linhas Modificadas: Q1: [16.], Q2: [47.], Q3: [110.], Q4: [7020.]
+Calcula o AMLOC dos arquivos .java
+Gera o boxplot de AMLOC dos arquivos .java
+Calcula o AMLOC dos arquivos .java (Válidos - arquivos que modificaram pelo menos uma vez)
+Calcula os quartiles referente ao AMLOC dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [14.], Q2: [44.], Q3: [99.75], Q4: [5374.]
+Calculo da Complexidade Ciclomatica
+                        file_filename  file_complexity                 author_date
+2834                      Absent.java             14.0  2021-05-17 07:05:56.000000
+2855                      Absent.java             14.0  2021-05-17 07:05:56.000000
+4760  AbstractAbstractFutureTest.java             57.0  2022-02-09 14:55:02.000000
+4797  AbstractAbstractFutureTest.java             57.0  2022-02-09 14:55:02.000000
+6832  AbstractAbstractFutureTest.java             57.0  2023-04-17 04:16:32.000000
+...                               ...              ...                         ...
+7978                package-info.java              0.0  2023-06-26 14:11:54.000000
+7980                package-info.java              0.0  2023-06-26 14:11:54.000000
+8016                package-info.java              0.0  2023-07-06 09:26:57.000000
+8017                package-info.java              0.0  2023-07-06 09:26:57.000000
+7997              settings.gradle.kts              0.0  2023-06-28 11:13:25.000000
+
+[7379 rows x 3 columns]
+Calcula o boxplot de complexidade ciclomática
+Calcula os quartiles das complexidades ciclomáticas
+Quartis do Total de Linhas Modificadas: Q1: [10.], Q2: [28.], Q3: [77.], Q4: [827.]
+Calcula a complexidade ciclomática apenas dos arquivos .java
+Calcula os quartiles de complexidade ciclomática dos arquivos .java
+Quartis do Total de Linhas Modificadas: Q1: [9.], Q2: [26.], Q3: [78.], Q4: [767.]
+Calcula frequencia dos commits
+Quantidade de grupos: 1379
+
+list_of_files_frequency_in_commits: 1379
+Gera o boxplot da frequencia de commits
+Calcula os quartiles das frequencias de commits
+Quartis da Frequencia de Commits Q1: [2.], Q2: [4.], Q3: [6.], Q4: [134.]
+Gera o boxplot da FOC apenas dos arquivos .java
+Quartis da Frequencia de Commits Q1: [4.], Q2: [8.], Q3: [12.], Q4: [103.]
+Gera o scatter plot AMLOC e FOC
+Gera o scatter plot AMLOC e FOC com quadrantes
+Arquivos criticos: Alta AMLOC e Alta FOC
+[('AbstractBiMap.java', 306, 16), ('AbstractExecutionThreadService.java', 207, 13), ('AbstractFuture.java', 1038, 55), ('AbstractIdleService.java', 117, 13), ('AbstractScheduledService.java', 650, 25), ('AggregateFuture.java', 250, 20), ('ArrayTable.java', 376, 18), ('BaseEncoding.java', 469, 24), ('BloomFilter.java', 178, 14), ('ByteStreams.java', 298, 26), ('CacheBuilder.java', 678, 55), ('CacheBuilderSpec.java', 199, 14), ('CacheLoader.java', 104, 14), ('CharStreams.java', 152, 18), ('ClassPath.java', 1097, 22), ('ClosingFuture.java', 5374, 29), ('CollectionFuture.java', 174, 20), ('CompactHashMap.java', 858, 18), ('ConcurrentHashMultiset.java', 146, 22), ('Converter.java', 500, 34), ('Doubles.java', 187, 18), ('ElementTypesAreNonnullByDefault.java', 1394, 47), ('Equivalence.java', 353, 16), ('EvictingQueue.java', 118, 14), ('ExecutionSequencer.java', 1496, 30), ('FileBackedOutputStream.java', 148, 17), ('Files.java', 464, 24), ('Floats.java', 183, 18), ('FluentIterable.java', 314, 22), ('Futures.java', 759, 46), ('HashBiMap.java', 453, 18), ('Hashing.java', 348, 22), ('Helpers.java', 280, 16), ('HttpHeaders.java', 830, 58), ('IgnoreJRERequirement.java', 364, 16), ('ImmutableBiMap.java', 678, 38), ('ImmutableCollection.java', 140, 20), ('ImmutableList.java', 148, 24), ('ImmutableListMultimap.java', 132, 23), ('ImmutableMap.java', 1403, 60), ('ImmutableMultimap.java', 182, 16), ('ImmutableMultiset.java', 181, 19), ('ImmutableRangeMap.java', 104, 19), ('ImmutableRangeSet.java', 116, 25), ('ImmutableSet.java', 612, 29), ('ImmutableSetMultimap.java', 177, 24), ('ImmutableSortedMap.java', 953, 51), ('ImmutableSortedSet.java', 137, 24), ('ImmutableTable.java', 271, 27), ('InetAddresses.java', 511, 24), ('InternetDomainName.java', 308, 20), ('InterruptibleTask.java', 490, 19), ('Ints.java', 224, 18), ('Iterables.java', 404, 18), ('Iterators.java', 600, 20), ('Java8Compatibility.java', 288, 16), ('JdkFutureAdapters.java', 116, 18), ('ListenableFuture.java', 298, 23), ('Lists.java', 419, 18), ('LocalCache.java', 1410, 45), ('LongMath.java', 430, 24), ('Longs.java', 194, 18), ('MapMakerInternalMap.java', 1109, 25), ('Maps.java', 2731, 50), ('MediaType.java', 348, 24), ('MinMaxPriorityQueue.java', 240, 18), ('MoreExecutors.java', 427, 32), ('MoreObjects.java', 435, 14), ('Multimaps.java', 926, 25), ('Multisets.java', 379, 20), ('NullnessCasts.java', 416, 15), ('Ordering.java', 180, 16), ('ParametricNullness.java', 3390, 103), ('Platform.java', 558, 55), ('PublicSuffixPatterns.java', 448, 67), ('Range.java', 104, 16), ('RegularImmutableMap.java', 555, 13), ('ServiceManager.java', 165, 27), ('Sets.java', 743, 38), ('SimpleTimeLimiter.java', 142, 14), ('Striped.java', 204, 14), ('Synchronized.java', 1069, 16), ('Throwables.java', 198, 18), ('Traverser.java', 1220, 14), ('TreeRangeSet.java', 201, 18), ('TypeToken.java', 237, 20), ('Types.java', 133, 14), ('Uninterruptibles.java', 285, 17), ('ValueGraphBuilder.java', 130, 20), ('package-info.java', 1690, 88)]

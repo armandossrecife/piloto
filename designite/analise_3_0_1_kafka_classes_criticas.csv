@@ -1,0 +1,18 @@
+ProjectName,PackageName,TypeName,CodeSmell
+kafka,org.apache.kafka.clients.consumer.internals,AbstractCoordinator,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.kstream.internals,CogroupedKStreamImpl,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.clients.consumer.internals,ConsumerNetworkClient,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.processor.internals,InternalTopologyBuilder,Hub-like Modularization
+kafka,org.apache.kafka.streams.processor.internals,InternalTopologyBuilder,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.kstream.internals,KStreamImpl,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.kstream.internals,KStreamImplJoin,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.kstream.internals,KTableImpl,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.kstream.internals,KTableKTableAbstractJoin,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.clients.admin,KafkaAdminClient,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.clients,NetworkClient,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.processor.internals,StreamTask,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.processor.internals,StreamThread,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams,StreamsConfig,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.processor.internals,StreamsPartitionAssignor,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.streams.processor.internals,TaskManager,Cyclic-Dependent Modularization
+kafka,org.apache.kafka.trogdor.coordinator,TaskManager,Cyclic-Dependent Modularization

@@ -1,0 +1,16 @@
+ProjectName,PackageName,TypeName,CodeSmell
+java,org.apache.activemq.broker,BrokerService,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker,BrokerService,Hub-like Modularization
+java,org.apache.activemq.broker,BrokerServiceAware,Cyclic-Dependent Modularization
+java,org.apache.activemq.network,DemandForwardingBridgeSupport,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,DurableTopicSubscription,Cyclic-Dependent Modularization
+java,org.apache.activemq.memory.buffer,MessageQueue,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region.virtual,MirroredQueue,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region.policy,PendingQueueMessageStoragePolicy,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,Queue,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,QueueBrowserSubscription,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,QueueDispatchSelector,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,QueueSubscription,Cyclic-Dependent Modularization
+java,org.apache.activemq.plugin,SubQueueSelectorCacheBroker,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker.region,TopicSubscription,Cyclic-Dependent Modularization
+java,org.apache.activemq.broker,TransportConnector,Cyclic-Dependent Modularization

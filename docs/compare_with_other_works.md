@@ -44,7 +44,7 @@ The outcome of our tests on the Guava repository is a set of critical files affe
 
 More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compara_sas2022.ipynb)
 
-### 2.1 Comparison with Sas et al. 2022:
+### 2.1 Comparison with Sas et al. 2022 (m2):
 
 2.1.1 We compared the critical source code files identified by our method with the files impacted by Architectural Smells (Cyclic Dependency and Hub-like Dependency) identified in Sas et al. 2022's work.
 
@@ -52,9 +52,9 @@ More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/bl
 
 The objective of comparing the results obtained using our method with the methods of Sas et al. 2022 and Tsoukalas et al. 2023 is to demonstrate that our method produces results that are close to or consistent with those already validated by the scientific community.
 
-R1) Data from the SAS2022 (m2) was collected regarding classes affected by Architectural Smells from the following repositories:
+R1) Data from the SAS2022 was collected regarding classes affected by Architectural Smells from the following repositories:
 
-List of Critical Classes m1 x m2
+List of Critical Classes m1 x m2 - It shows the names of the critical classes identified by each method.
 ```bash
 Repository  | ATDCodeAnalyzer                           | SAS2022
 Cassandra   | list_cassandra_critical_m1 		| list_cassandra_critical_m2
@@ -63,7 +63,7 @@ Guava       | list_guava_critical_m1 		  	| list_guava_critical_m2
 
 ```
 
-Comparison of Methods
+Comparison of Methods - It shows the number of classes identified as critical by each method, as well as the accuracy rate of ATDCodeAnalyzer in relation to SAS2022.
 ```bash
 Repository 	| ATDCodeAnalyzer | SAS2022 	| ATDCodeAnalyzer Hit Rate in relation to SAS2022
 Cassandra 	| 12                | 11 		| 91.66%
@@ -80,9 +80,9 @@ Obs:
 
 2.2.2 Describe the process of executing your method on these repositories and comparing the results with Sas et al.'s method (SASM).
 
-## 3. Testing and Comparison with Tsoukalas et al. 2023 (m3) on the Kafka Repository (TODO):
+## 3. Testing and Comparison with Tsoukalas et al. 2023 (m3) on the Kafka Repository:
 
-3.1 Describe how you applied your method to conduct tests on the Kafka repository.
+3.1 Describe how you applied your method to conduct tests on the Kafka repository (TODO).
 
 3.2 Explain how the results were used to compare with Tsoukalas et al. 2023's work on technical debt prioritization.
 

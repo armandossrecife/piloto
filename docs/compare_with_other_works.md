@@ -6,7 +6,7 @@ An Approach to Identify Source Code Files Impacted by Architectural Technical De
 
 ## 1. The Proposed Method
 
-### 1.1 (i) Identification of ATD-Impacted source code files using change analysis and code metrics:
+### 1.1 Identification of ATD-Impacted source code files using change analysis and code metrics:
 
 Our method is divided into five phases:
 
@@ -19,6 +19,8 @@ Phase 3 - Calculate quartiles of the metrics and select the source code files im
 Phase 4 - Analyze critical source code files impacted by Architectural Smells and their dependent source code files with co-change. The dependent source code files are selected using DSM (Dependency Structure Matrix)
 
 Phase 5 - Report potential critical source code files impacted by Architectural Smells.
+
+More details in https://github.com/mining-software-repositories/cassandra/blob/main/data/AnalysisCassandraRepositoryFlow.png
 
 ### 1.2 Testing method on selectect repositories: 
 
@@ -42,7 +44,7 @@ The outcome of our tests on the Guava repository is a set of critical files affe
 
 More details in [analise_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/analise_sas2022.ipynb)
 
-### 2.1 (iii) Comparison with Sas et al. 2022:
+### 2.1 Comparison with Sas et al. 2022:
 
 2.1.1 We compared the critical source code files identified by our method with the files impacted by Architectural Smells (Cyclic Dependency and Hub-like Dependency) identified in Sas et al. 2022's work.
 
@@ -67,3 +69,5 @@ Obs:
 3.2 Explain how the results were used to compare with Tsoukalas et al. 2023's work on technical debt prioritization.
 
 3.2. Highlight the focus on classes with the highest prioritization of technical debt payments.
+
+More details in [analise_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compara_Tsoukalas2023.ipynb)

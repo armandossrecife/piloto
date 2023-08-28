@@ -42,7 +42,7 @@ The outcome of our tests on the Guava repository is a set of critical files affe
 
 ## 2. Comparison of Results from the proposed method and Sas et al. 2022
 
-More details in [analise_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/analise_sas2022.ipynb)
+More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compara_sas2022.ipynb)
 
 ### 2.1 Comparison with Sas et al. 2022:
 

@@ -1,0 +1,44 @@
+flowchart TD
+    id1(Install Dependencies)
+    id2(TKS2022 Replication Kit)
+    id3(Details of Repository)
+
+    id4(ATDCodeAnalyzer)
+    id5(Kafka)
+
+    id8(Files frequently changed over time: AMLOC_FOC)
+    id9(Architectural Smells: CD_HLD)
+    id10(Critial Classes)
+
+    id11(Kafka critical classes)
+
+    id14(Kafka classes with High Priority by TKS2023)
+
+    id17(Compare Hit Rate)
+
+    id18(Kafka Hit Rate)
+
+    subgraph dependencies
+    id2 --> id3
+    id1 --> id2
+    end
+
+    id5 --> id4
+
+    subgraph ATDCodeAnalyzer
+    id4 --> id8
+    id8 --> id9
+    id9 --> id10
+    end
+
+    id10 --> id11
+
+    id11 --> id17
+
+    id3 --> id14
+
+    subgraph CompareTKS2023
+    id14 --> id17
+    end
+
+    id17 --> id18

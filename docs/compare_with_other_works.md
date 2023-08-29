@@ -102,4 +102,4 @@ Repository | ATDCodeAnalyzer | TKS2023 | ATDCodeAnalyzer Hit Rate in relation to
 Kafka      | 10              | 9       | 90.00%
 ```
 
-More details in [analise_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compara_Tsoukalas2023.ipynb)
+More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_tks_2023.ipynb)

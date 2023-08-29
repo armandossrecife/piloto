@@ -1,5 +1,0 @@
-nome,repositorio,source_java,url
-cassandra,repositorio1,src/java,https://github.com/apache/cassandra.git
-kafka,repositorio2,core/src/main/java/kafka,https://github.com/apache/kafka.git
-spring-boot,repositorio3,spring-boot-project/spring-boot/src/main/java/org/springframework/boot,https://github.com/spring-projects/spring-boot.git
-elasticsearch,repositorio4,server/src/main/java/org/elasticsearch,https://github.com/elastic/elasticsearch.git

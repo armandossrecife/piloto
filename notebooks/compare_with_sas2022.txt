@@ -1,0 +1,58 @@
+flowchart TD
+    id1(Install Dependencies)
+    id2(SAS2022 Replication Kit)
+    id3(Details of Repositories)
+    id4(ATDCodeAnalyzer)
+    id5(Cassandra)
+    id6(ActiveMQ)
+    id7(Guava)
+    id8(Files frequently changed over time: AMLOC_FOC)
+    id9(Architectural Smells: CD_HLD)
+    id10(Critial Classes)
+    id11(Cassandra critical classes)
+    id12(ActiveMQ critical classes)
+    id13(Guava crical classes)
+    id14(Cassandra classes with AS by SAS2022)
+    id15(ActiveMQ classes with AS by SAS2022)
+    id16(Guava classes with AS by SAS2022)
+    id17(Compare Hit Rate)
+    id18(Cassandra Hit Rate)
+    id19(ActiveMQ Hit Rate)
+    id20(Guava Hit Rate)
+
+    subgraph dependencies
+    id2 --> id3
+    id1 --> id2
+    end
+
+    id5 --> id4
+    id6 --> id4
+    id7 --> id4
+
+    subgraph ATDCodeAnalyzer
+    id4 --> id8
+    id8 --> id9
+    id9 --> id10
+    end
+
+    id10 --> id11
+    id10 --> id12
+    id10 --> id13
+
+    id11 --> id17
+    id12 --> id17
+    id13 --> id17
+
+    id3 --> id14
+    id3 --> id15
+    id3 --> id16
+
+    subgraph CompareSAS2022
+    id14 --> id17
+    id15 --> id17
+    id16 --> id17
+    end
+
+    id17 --> id18
+    id17 --> id19
+    id17 --> id20

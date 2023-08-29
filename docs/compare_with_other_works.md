@@ -42,7 +42,7 @@ The outcome of our tests on the Guava repository is a set of critical files affe
 
 ## 2. Comparison of Results from the proposed method and Sas et al. 2022 (m2)
 
-More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compara_sas2022.ipynb)
+More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_sas2022.ipynb)
 
 ### 2.1 Comparison with Sas et al. 2022 (m2):
 
@@ -67,8 +67,8 @@ Comparison of Methods - It shows the number of classes identified as critical by
 ```bash
 Repository 	| ATDCodeAnalyzer | SAS2022 	| ATDCodeAnalyzer Hit Rate in relation to SAS2022
 Cassandra 	| 12                | 11 		| 91.66%
-ActiveMQ        | 6                 | 3 		| 50.00%
-Guava           | 68                | 38 		| 55.88%
+ActiveMQ        | 5                 | 3 		| 60%
+Guava           | 46                | 27 		| 59%
 ```
 
 Obs: 

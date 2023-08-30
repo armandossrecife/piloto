@@ -94,12 +94,14 @@ List of Critical Classes m1 x m3
 ```bash
 Repository | ATDCodeAnalyzer       | TKS2023
 Kafka      | list_kafka_critical_m1 | list_kafka_critical_m3
+Guava      | list_guava_critical_m1 | list_guava_critical_m3
 ```
 
 Comparison of Methods
 ```bash
 Repository | ATDCodeAnalyzer | TKS2023 | ATDCodeAnalyzer Hit Rate in relation to TKS2023
-Kafka      | 10              | 9       | 90.00%
+Kafka      | 18              | 9       | 50.00%
+Guava      | 16              | 8       | 50.00%
 ```
 
 More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_tks_2023.ipynb)

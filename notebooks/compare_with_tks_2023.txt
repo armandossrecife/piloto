@@ -5,18 +5,22 @@ flowchart TD
 
     id4(ATDCodeAnalyzer)
     id5(Kafka)
+    id51(Guava)
 
     id8(Files frequently changed over time: AMLOC_FOC)
     id9(Architectural Smells: CD_HLD)
     id10(Critial Classes)
 
     id11(Kafka critical classes)
+    id111(Guava critical classes)
 
     id14(Kafka classes with High Priority by TKS2023)
+    id141(Guava classes with High Priority by TKS2023)
 
     id17(Compare Hit Rate)
 
     id18(Kafka Hit Rate)
+    id181(Guava Hit Rate)
 
     subgraph dependencies
     id2 --> id3
@@ -24,6 +28,7 @@ flowchart TD
     end
 
     id5 --> id4
+    id51 --> id4
 
     subgraph ATDCodeAnalyzer
     id4 --> id8
@@ -32,13 +37,18 @@ flowchart TD
     end
 
     id10 --> id11
+    id10 --> id111
 
     id11 --> id17
+    id111 --> id17
 
     id3 --> id14
+    id3 --> id141
 
     subgraph CompareTKS2023
     id14 --> id17
+    id141 --> id17
     end
 
     id17 --> id18
+    id17 --> id181

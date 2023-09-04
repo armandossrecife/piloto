@@ -129,4 +129,16 @@ Kafka      | 18              | 9       | 50.00%
 Guava      | 16              | 8       | 50.00%
 ```
 
+Kafka
+
+list_kafka_critical_m1 = ['StreamThread.java','Fetcher.java','StreamTask.java','KafkaConsumer.java','StreamsConfig.java','ConsumerCoordinator.java','KafkaProducer.java','KafkaStreams.java','RocksDBStore.java','KTableImpl.java','AbstractCoordinator.java','KStreamImpl.java','ProcessorStateManager.java','NetworkClient.java','Sender.java','Utils.java','ConsumerNetworkClient.java','RecordAccumulator.java']
+
+list_kafka_critical_m2 = ['StreamThread.java', 'KafkaConsumer.java', 'StreamTask.java', 'Fetcher.java', 'KafkaStreams.java','KStreamImpl.java', 'KafkaProducer.java','StreamsConfig.java', 'ConsumerCoordinator.java']
+
+Guava
+
+list_guava_critical_m1 =['Graphs.java','AbstractFuture.java','Futures.java','Maps.java','AbstractNetwork.java','ImmutableMultiset.java','ImmutableSet.java','Iterators.java','MoreFiles.java','LocalCache.java', 'ImmutableMap.java','ImmutableCollection.java','MapMakerInternalMap.java','Sets.java','HttpHeaders.java', 'ImmutableNetwork.java']
+
+list_guava_critical_m2 = ['Maps.java','ImmutableMap.java', 'LocalCache.java', 'AbstractFuture.java', 'HttpHeaders.java', 'Futures.java', 'Sets.java', 'MapMakerInternalMap.java']
+
 More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_tks_2023.ipynb)

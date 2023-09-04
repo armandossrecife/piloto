@@ -60,7 +60,7 @@ Repository  | ATDCodeAnalyzer                           | SAS2022
 Cassandra   | list_cassandra_critical_m1 		| list_cassandra_critical_m2
 ActiveMQ    | list_activemq_critical_m1 		| list_activemq_critical_m2
 Guava       | list_guava_critical_m1 		  	| list_guava_critical_m2
-
+Jackson     | list_jackson_critical_m1                  | list_jackson_critical_m2
 ```
 
 Comparison of Methods - It shows the number of classes identified as critical by each method, as well as the accuracy rate of ATDCodeAnalyzer in relation to SAS2022.
@@ -69,7 +69,32 @@ Repository 	| ATDCodeAnalyzer | SAS2022 	| ATDCodeAnalyzer Hit Rate in relation 
 Cassandra 	| 12                | 11 		| 91.66%
 ActiveMQ        | 5                 | 3 		| 60%
 Guava           | 46                | 27 		| 59%
+Jackson         | 8                 | 4                 | 50%
 ```
+
+Cassandra
+
+list_cassandra_critical_m1 = ['StorageService', 'ColumnFamilyStore', 'DatabaseDescriptor', 'CompactionManager', 'StorageProxy', 'SSTableReader', 'Config', 'CassandraDaemon', 'SelectStatement', 'SinglePartitionReadCommand', 'NodeProbe', 'MessagingService']
+
+list_cassandra_critical_m2 = ['StorageService', 'ColumnFamilyStore', 'DatabaseDescriptor', 'CompactionManager', 'StorageProxy', 'SSTableReader', 'Config', 'CassandraDaemon', 'SelectStatement', 'SinglePartitionReadCommand', 'MessagingService']
+
+ActiveMQ
+
+list_activemq_critical_m1 = ['BrokerService','DemandForwardingBridgeSupport','Queue','TopicSubscription','TransportConnector']
+
+list_activemq_critical_m2 = ['BrokerService', 'Queue', 'TransportConnector']
+
+Guava 
+
+list_guava_critical_m1 = ['AbstractFuture', 'BaseEncoding', 'CacheBuilder', 'CacheBuilderSpec', 'ClassPath', 'ClosingFuture', 'Converter', 'Doubles', 'Equivalence', 'ExecutionSequencer', 'Floats', 'Hashing', 'ImmutableBiMap', 'ImmutableCollection', 'ImmutableList', 'ImmutableListMultimap', 'ImmutableMap', 'ImmutableMultimap', 'ImmutableMultiset', 'ImmutableRangeMap', 'ImmutableRangeSet', 'ImmutableSet', 'ImmutableSetMultimap', 'ImmutableSortedMap', 'ImmutableSortedSet', 'ImmutableTable', 'InterruptibleTask', 'Ints', 'Iterables', 'Iterators', 'LocalCache', 'LongMath', 'Longs', 'MapMakerInternalMap', 'Maps', 'Multisets', 'Ordering', 'Platform', 'Range', 'RegularImmutableMap', 'Sets', 'Synchronized', 'TreeRangeSet', 'TypeToken', 'Types', 'ValueGraphBuilder']
+
+list_guava_critical_m2 = ['BaseEncoding', 'CacheBuilder', 'CacheBuilderSpec', 'ClassPath', 'ImmutableBiMap', 'ImmutableList', 'ImmutableListMultimap', 'ImmutableMap', 'ImmutableMultimap', 'ImmutableMultiset', 'ImmutableRangeMap', 'ImmutableRangeSet', 'ImmutableSet', 'ImmutableSetMultimap', 'ImmutableSortedMap', 'ImmutableSortedSet', 'ImmutableTable', 'LocalCache', 'MapMakerInternalMap', 'Maps', 'Ordering', 'Platform', 'Range', 'RegularImmutableMap', 'Sets', 'TreeRangeSet', 'TypeToken']
+
+Jackson-databind
+
+ list_jackson_critical_m1  = ['AnnotationIntrospector', 'AnnotationIntrospectorPair', 'ClassUtil', 'EnumValues', 'JsonNode', 'ObjectMapper', 'ObjectNode', 'TokenBuffer']
+
+ list_jackson_critical_m2 = ['AnnotationIntrospector', 'JsonNode', 'ObjectMapper', 'ObjectNode']
 
 Obs: 
 - Explain the comparison process between the critical source code files identified by your method and those impacted by Architectural Smells in Sas et al. 2022's work.

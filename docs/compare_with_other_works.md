@@ -194,3 +194,5 @@ More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto
 | 19 | TD Forecast                    | No               | No    | Yes |
 | 20 | Result visualization           | Yes              | No    | Yes |
 | 21 | Automatic Process              | Yes              | No    | No  |
+
+This table is available on spreadsheet https://github.com/armandossrecife/piloto/blob/main/docs/ComparingFeaturesAmongM1M2M3.xlsx

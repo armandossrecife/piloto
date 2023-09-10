@@ -168,3 +168,28 @@ list_guava_critical_m2 = ['Maps.java','ImmutableMap.java', 'LocalCache.java', 'A
 ![Guava M1 x M3](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/guavam1xm3.png "Guava M1 x M3")
 
 More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_tks_2023.ipynb)
+
+## 4. Comparing Features among M1, M2 and M3
+
+| Feature | ATDCodeAnalyzer (M1) | SAS2022 (M2) | TKS2023 (M3) |
+|:--------|:---------------------|-------------:|-------------:|
+| Github Repository        		 | Yes              | Yes           | Yes |
+| Code Metrics             		 | LOC (Lines of Code), AMLOC (Code Churn),FOC,CC | LOC, Change Has Occurred (CHO),<br/>Percentage of Commits a Class has Changed (PCCC),TACH (Code Churn)  | reliability_remediation_effort,reliability_rating,bugs,<br/>security_remediation_effort,security_rating,vulnerabilities,<br/>sqale_debt_ratio,sqale_rating,code_smells,sqale_index,<br/>development_cost,effort_to_reach_maintainability_rating_a,<br/>test_failures,coverage,test_errors,line_coverage,lines_to_cover,<br/>uncovered_lines,test_success_density,skipped_tests,duplicated_files,<br/>duplicated_blocks,duplicated_lines,duplicated_lines_density,statements,<br/>functions,generated_lines,lines,comment_lines,ncloc,comment_lines_density,<br/>complexity,cognitive_complexity,file_complexity,major_violations,<br/>blocker_violations,info_violations,violations,critical_violations,<br/>reopened_issues,false_positive_issues,confirmed_issues,open_issues,<br/>wont_fix_issues,minor_violations,public_undocumented_api,<br/>public_documented_api_density,Ca,Ce,WMC,NOC,DIT,LCOM,CBO,NPM,RFC |
+| Analysis of code changes over time | Yes | Yes | Yes |
+| Architectural Smells     		 | Cyclic Dependency,<br/>Hub-Like Dependency | Cyclic Dependency, Unstable Dependency,<br/> Hub-Like Dependency, God Component | No |
+| Design Smells               | Yes              | No    | No |
+| Code Smells                 | No               | No    | Yes |
+| Analysis of Quartiles    	     | Yes              | Yes   | No |
+| Dependency Structure Matrix    | Yes              | No    | No |
+| Critical Classes               | Yes              | Partial    |Yes |
+| Co-change                      | Yes              | No    | No |
+| Files impacted by Critical Class | Yes            | No    | No |
+| Analysis of Issue Tracker      | No               | No    | Yes |
+| Machine Learning               | No               | No    | Yes |
+| Change Proneness               | Yes              | No    | Yes |
+| TD change Proneness            | No               | No    | Yes |
+| Arcan                          | Yes              | Yes   | No |
+| Sonarqube                      | No               | No    | Yes |
+| CK Java                        | No               | No    | Yes |
+| TD Forecast                    | No               | No    | Yes |
+| Result visualization           | Yes              | No    | Yes |

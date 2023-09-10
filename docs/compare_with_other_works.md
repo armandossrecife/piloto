@@ -171,25 +171,26 @@ More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto
 
 ## 4. Comparing Features among M1, M2 and M3
 
-| Feature | ATDCodeAnalyzer (M1) | SAS2022 (M2) | TKS2023 (M3) |
-|:--------|:---------------------|-------------:|-------------:|
-| Github Repository        		 | Yes              | Yes           | Yes |
-| Code Metrics             		 | LOC (Lines of Code), AMLOC (Code Churn),FOC,CC | LOC, Change Has Occurred (CHO),<br/>Percentage of Commits a Class has Changed (PCCC),TACH (Code Churn)  | reliability_remediation_effort,reliability_rating,bugs,<br/>security_remediation_effort,security_rating,vulnerabilities,<br/>sqale_debt_ratio,sqale_rating,code_smells,sqale_index,<br/>development_cost,effort_to_reach_maintainability_rating_a,<br/>test_failures,coverage,test_errors,line_coverage,lines_to_cover,<br/>uncovered_lines,test_success_density,skipped_tests,duplicated_files,<br/>duplicated_blocks,duplicated_lines,duplicated_lines_density,statements,<br/>functions,generated_lines,lines,comment_lines,ncloc,comment_lines_density,<br/>complexity,cognitive_complexity,file_complexity,major_violations,<br/>blocker_violations,info_violations,violations,critical_violations,<br/>reopened_issues,false_positive_issues,confirmed_issues,open_issues,<br/>wont_fix_issues,minor_violations,public_undocumented_api,<br/>public_documented_api_density,Ca,Ce,WMC,NOC,DIT,LCOM,CBO,NPM,RFC |
-| Analysis of code changes over time | Yes | Yes | Yes |
-| Architectural Smells     		 | Cyclic Dependency,<br/>Hub-Like Dependency | Cyclic Dependency, Unstable Dependency,<br/> Hub-Like Dependency, God Component | No |
-| Design Smells               | Yes              | No    | No |
-| Code Smells                 | No               | No    | Yes |
-| Analysis of Quartiles    	     | Yes              | Yes   | No |
-| Dependency Structure Matrix    | Yes              | No    | No |
-| Critical Classes               | Yes              | Partial    |Yes |
-| Co-change                      | Yes              | No    | No |
-| Files impacted by Critical Class | Yes            | No    | No |
-| Analysis of Issue Tracker      | No               | No    | Yes |
-| Machine Learning               | No               | No    | Yes |
-| Change Proneness               | Yes              | No    | Yes |
-| TD change Proneness            | No               | No    | Yes |
-| Arcan                          | Yes              | Yes   | No |
-| Sonarqube                      | No               | No    | Yes |
-| CK Java                        | No               | No    | Yes |
-| TD Forecast                    | No               | No    | Yes |
-| Result visualization           | Yes              | No    | Yes |
+| Id | Feature | ATDCodeAnalyzer (M1) | SAS2022 (M2) | TKS2023 (M3) |
+|:---|:--------|:---------------------|-------------:|-------------:|
+| 1 | Github Repository        		 | Yes              | Yes           | Yes |
+| 2 | Code Metrics             		 | LOC (Lines of Code), AMLOC (Code Churn),FOC,CC | LOC, Change Has Occurred (CHO),<br/>Percentage of Commits a Class has Changed (PCCC),TACH (Code Churn)  | reliability_remediation_effort,reliability_rating,<br/>bugs,security_remediation_effort,security_rating,<br/>vulnerabilities,<br/>sqale_debt_ratio,sqale_rating,<br/>code_smells,sqale_index,<br/>development_cost,<br/>effort_to_reach_maintainability_rating_a,<br/>test_failures,coverage,test_errors,line_coverage,<br/>lines_to_cover,uncovered_lines,test_success_density,<br/>skipped_tests,duplicated_files,duplicated_blocks,<br/>duplicated_lines,duplicated_lines_density,statements,<br/>functions,generated_lines,lines,comment_lines,<br/>ncloc,comment_lines_density,complexity,<br/>cognitive_complexity,file_complexity,major_violations,<br/>blocker_violations,info_violations,violations,<br/>critical_violations,reopened_issues,<br/>false_positive_issues,confirmed_issues,open_issues,<br/>wont_fix_issues,minor_violations,<br/>public_undocumented_api,<br/>public_documented_api_density,<br/>Ca,Ce,WMC,NOC,DIT,LCOM,CBO,NPM,RFC |
+| 3 | Analysis of code changes over time | Yes | Yes | Yes |
+| 4 | Architectural Smells     		 | Cyclic Dependency,<br/>Hub-Like Dependency | Cyclic Dependency, Unstable Dependency,<br/> Hub-Like Dependency, God Component | No |
+| 5 | Design Smells               | Yes              | No    | No |
+| 6 | Code Smells                 | No               | No    | Yes |
+| 7 | Analysis of Quartiles    	     | Yes              | Yes   | No |
+| 8 | Dependency Structure Matrix    | Yes              | No    | No |
+| 9 | Critical Classes               | Yes              | Partial    |Yes |
+| 10 | Co-change                      | Yes              | No    | No |
+| 11 | Files impacted by Critical Class | Yes            | No    | No |
+| 12 | Analysis of Issue Tracker      | No               | No    | Yes |
+| 13 | Machine Learning               | No               | No    | Yes |
+| 14 | Change Proneness               | Yes              | No    | Yes |
+| 15 | TD change Proneness            | No               | No    | Yes |
+| 16 | Arcan                          | Yes              | Yes   | No |
+| 17 | Sonarqube                      | No               | No    | Yes |
+| 18| CK Java                        | No               | No    | Yes |
+| 19 | TD Forecast                    | No               | No    | Yes |
+| 20 | Result visualization           | Yes              | No    | Yes |
+| 21 | Automatic Process              | Yes              | No    | No  |

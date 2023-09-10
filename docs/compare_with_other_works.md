@@ -22,6 +22,16 @@ Phase 5 - Report potential critical source code files impacted by Architectural 
 
 More details in https://github.com/mining-software-repositories/cassandra/blob/main/data/AnalysisCassandraRepositoryFlow.png
 
+### 1.1.2 Repository Details
+
+| name             | url                                               |qtd_files |   LOC_files | qtd_java |   LOC_java |   qtd_commits |   qtd_releases |   life_span (years) | source_java                 |   stars |   forks |   colaborators |
+|:-----------------|:--------------------------------------------------|--------:|------------:|-------:|-----------:|--------------:|---------------:|------------:|:----------------------------|--------:|--------:|---------------:|
+| activemq         | https://github.com/apache/activemq.git            |    4927 |      466219 |   4360 |     416555 |         11476 |             85 |     17.75 | activemq-http/src/main/java |    2200 |    1400 |            127 |
+| cassandra        | https://github.com/apache/cassandra.git           |    4999 |     1055614 |   4460 |     680880 |         29140 |            297 |     14.52 | src/java                    |    8100 |    3400 |            424 |
+| guava            | https://github.com/google/guava.git               |    1968 |      358412 |   1909 |     354072 |          6173 |            101 |     14.23 | guava/src                   |   48100 |   10700 |            293 |
+| jackson-databind | https://github.com/FasterXML/jackson-databind.git |    1194 |      202811 |   1153 |     147890 |          7180 |            187 |     11.72 | src/main/java               |    3300 |    1300 |            225 |
+| kafka            | https://github.com/apache/kafka.git               |    5434 |      856923 |   4269 |     629799 |         11650 |            222 |     12.11 | core/src                    |   25700 |   13000 |           1042 |
+
 ### 1.2 Testing method on selectect repositories: 
 
 1.2.1 Testing on Apache Cassandra Repository (https://github.com/apache/cassandra):
@@ -40,6 +50,10 @@ The outcome of our tests on the ActiveMQ repository is a set of critical files a
 
 The outcome of our tests on the Guava repository is a set of critical files affected by ATD and the files dependent on these critical files.
 
+1.2.5 Testing on Apache Jackson-databind Repository (https://github.com/FasterXML/jackson-databind.git)
+
+The outcome of our tests on Jackson-databind repository is a set of critical files affected by ATD and the files dependent on these critical files.
+
 ## 2. Comparison of Results from the proposed method and Sas et al. 2022 (m2)
 
 More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_sas2022.ipynb)
@@ -48,7 +62,7 @@ More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/bl
 
 2.1.1 We compared the critical source code files identified by our method with the files impacted by Architectural Smells (Cyclic Dependency and Hub-like Dependency) identified in Sas et al. 2022's work.
 
-2.1.2 In addition to the Cassandra repository, two more repositories analyzed by Sas et al. 2022's work were selected: ActiveMQ and Guava. These selected projects were chosen because they have a large number of .java files (>1500 files), a substantial LOC count for .java files (>300000 lines of code), project lifespan exceeding 10 years, a high number of project commits (>5000 commits), numerous releases (>80 releases), and significant community involvement (>2000 stars and >1000 forks of the  and coloborators > 120).
+2.1.2 In addition to the Cassandra repository, three more repositories analyzed by Sas et al. 2022's work were selected: ActiveMQ, Guava and Jackson-databind. These selected projects were chosen because they have a large number of .java files (>1500 files), a substantial LOC count for .java files (>300000 lines of code), project lifespan exceeding 10 years, a high number of project commits (>5000 commits), numerous releases (>80 releases), and significant community involvement (>2000 stars and >1000 forks of the  and coloborators > 120).
 
 The objective of comparing the results obtained using our method with the methods of Sas et al. 2022 and Tsoukalas et al. 2023 is to demonstrate that our method produces results that are close to or consistent with those already validated by the scientific community.
 
@@ -72,29 +86,37 @@ Guava           | 46                | 27 		| 59%
 Jackson         | 8                 | 4                 | 50%
 ```
 
-Cassandra
+**Cassandra**
 
 list_cassandra_critical_m1 = ['StorageService', 'ColumnFamilyStore', 'DatabaseDescriptor', 'CompactionManager', 'StorageProxy', 'SSTableReader', 'Config', 'CassandraDaemon', 'SelectStatement', 'SinglePartitionReadCommand', 'NodeProbe', 'MessagingService']
 
 list_cassandra_critical_m2 = ['StorageService', 'ColumnFamilyStore', 'DatabaseDescriptor', 'CompactionManager', 'StorageProxy', 'SSTableReader', 'Config', 'CassandraDaemon', 'SelectStatement', 'SinglePartitionReadCommand', 'MessagingService']
 
-ActiveMQ
+![Cassandra M1 x M2](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/cassandram1xm2.png "Cassandra M1 x M2")
+
+**ActiveMQ**
 
 list_activemq_critical_m1 = ['BrokerService','DemandForwardingBridgeSupport','Queue','TopicSubscription','TransportConnector']
 
 list_activemq_critical_m2 = ['BrokerService', 'Queue', 'TransportConnector']
 
-Guava 
+![AcitveMQ M1 x M2](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/activemqm1xm2.png "ActiveMQ M1 x M2")
+
+**Guava** 
 
 list_guava_critical_m1 = ['AbstractFuture', 'BaseEncoding', 'CacheBuilder', 'CacheBuilderSpec', 'ClassPath', 'ClosingFuture', 'Converter', 'Doubles', 'Equivalence', 'ExecutionSequencer', 'Floats', 'Hashing', 'ImmutableBiMap', 'ImmutableCollection', 'ImmutableList', 'ImmutableListMultimap', 'ImmutableMap', 'ImmutableMultimap', 'ImmutableMultiset', 'ImmutableRangeMap', 'ImmutableRangeSet', 'ImmutableSet', 'ImmutableSetMultimap', 'ImmutableSortedMap', 'ImmutableSortedSet', 'ImmutableTable', 'InterruptibleTask', 'Ints', 'Iterables', 'Iterators', 'LocalCache', 'LongMath', 'Longs', 'MapMakerInternalMap', 'Maps', 'Multisets', 'Ordering', 'Platform', 'Range', 'RegularImmutableMap', 'Sets', 'Synchronized', 'TreeRangeSet', 'TypeToken', 'Types', 'ValueGraphBuilder']
 
 list_guava_critical_m2 = ['BaseEncoding', 'CacheBuilder', 'CacheBuilderSpec', 'ClassPath', 'ImmutableBiMap', 'ImmutableList', 'ImmutableListMultimap', 'ImmutableMap', 'ImmutableMultimap', 'ImmutableMultiset', 'ImmutableRangeMap', 'ImmutableRangeSet', 'ImmutableSet', 'ImmutableSetMultimap', 'ImmutableSortedMap', 'ImmutableSortedSet', 'ImmutableTable', 'LocalCache', 'MapMakerInternalMap', 'Maps', 'Ordering', 'Platform', 'Range', 'RegularImmutableMap', 'Sets', 'TreeRangeSet', 'TypeToken']
 
-Jackson-databind
+![Guava M1 x M2](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/guavam1xm2.png "Guava M1 x M2")
+
+**Jackson-databind**
 
  list_jackson_critical_m1  = ['AnnotationIntrospector', 'AnnotationIntrospectorPair', 'ClassUtil', 'EnumValues', 'JsonNode', 'ObjectMapper', 'ObjectNode', 'TokenBuffer']
 
  list_jackson_critical_m2 = ['AnnotationIntrospector', 'JsonNode', 'ObjectMapper', 'ObjectNode']
+
+![Jackson-databind M1 x M2](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/jacksonm1xm2.png "Jackson-databind M1 x M2")
 
 Obs: 
 - Explain the comparison process between the critical source code files identified by your method and those impacted by Architectural Smells in Sas et al. 2022's work.
@@ -129,16 +151,20 @@ Kafka      | 18              | 9       | 50.00%
 Guava      | 16              | 8       | 50.00%
 ```
 
-Kafka
+**Kafka**
 
 list_kafka_critical_m1 = ['StreamThread.java','Fetcher.java','StreamTask.java','KafkaConsumer.java','StreamsConfig.java','ConsumerCoordinator.java','KafkaProducer.java','KafkaStreams.java','RocksDBStore.java','KTableImpl.java','AbstractCoordinator.java','KStreamImpl.java','ProcessorStateManager.java','NetworkClient.java','Sender.java','Utils.java','ConsumerNetworkClient.java','RecordAccumulator.java']
 
 list_kafka_critical_m2 = ['StreamThread.java', 'KafkaConsumer.java', 'StreamTask.java', 'Fetcher.java', 'KafkaStreams.java','KStreamImpl.java', 'KafkaProducer.java','StreamsConfig.java', 'ConsumerCoordinator.java']
 
-Guava
+![Kafka M1 x M3](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/kafkam1xm3.png "Kafka M1 x M3")
+
+**Guava**
 
 list_guava_critical_m1 =['Graphs.java','AbstractFuture.java','Futures.java','Maps.java','AbstractNetwork.java','ImmutableMultiset.java','ImmutableSet.java','Iterators.java','MoreFiles.java','LocalCache.java', 'ImmutableMap.java','ImmutableCollection.java','MapMakerInternalMap.java','Sets.java','HttpHeaders.java', 'ImmutableNetwork.java']
 
 list_guava_critical_m2 = ['Maps.java','ImmutableMap.java', 'LocalCache.java', 'AbstractFuture.java', 'HttpHeaders.java', 'Futures.java', 'Sets.java', 'MapMakerInternalMap.java']
+
+![Guava M1 x M3](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/guavam1xm3.png "Guava M1 x M3")
 
 More details in [compare_with_tks2023](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_tks_2023.ipynb)

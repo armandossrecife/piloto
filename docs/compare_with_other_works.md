@@ -134,7 +134,9 @@ More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/bl
 
 ## 3. Testing and Comparison with Tsoukalas et al. 2023 (m3) on the Kafka Repository:
 
-TKS2023 presents a method for prioritizing Technical Debt (TD) issues by utilizing data from TD prediction techniques. It focuses on individual class-level granularity to provide actionable insights. This approach takes into account factors such as the likelihood of code changes and the predicted evolution of TD. It employs visualization techniques to identify classes that may become difficult to maintain in the future.
+TKS2023 presents a method for prioritizing Technical Debt (TD) issues by utilizing data from TD prediction techniques. It focuses on individual class-level granularity to provide actionable insights. This approach takes into account factors such as the likelihood of code changes and the predicted evolution of TD. It employs visualization techniques to identify classes that may become difficult to maintain in the future. 
+
+TKS2023 Diagram: https://github.com/armandossrecife/piloto/blob/main/docs/diagramas/tks2023.jpg
 
 3.1 Method to conduct tests on the Kafka and Guava repository.
 

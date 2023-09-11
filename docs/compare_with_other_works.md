@@ -56,7 +56,9 @@ The outcome of our tests on Jackson-databind repository is a set of critical fil
 
 ## 2. Comparison of Results from the proposed method and Sas et al. 2022 (m2)
 
-More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_sas2022.ipynb)
+**SAS2022 Goal**: Investigate the relation between architecture smells and source code changes. More specifically, the frequency and size of changes are correlated with the presence of a selected set of architectural smells.
+
+**How?**: Based on a case study of 31 open-source Java systems, show that 87% of the analyzed commits present more changes in artifacts with at least one smell, and the likelihood of changing increases with the number of smells.
 
 ### 2.1 Comparison with Sas et al. 2022 (m2):
 
@@ -118,14 +120,17 @@ list_guava_critical_m2 = ['BaseEncoding', 'CacheBuilder', 'CacheBuilderSpec', 'C
 
 ![Jackson-databind M1 x M2](https://raw.githubusercontent.com/armandossrecife/piloto/main/docs/diagramas/jacksonm1xm2.png "Jackson-databind M1 x M2")
 
-Obs: 
-- Explain the comparison process between the critical source code files identified by your method and those impacted by Architectural Smells in Sas et al. 2022's work.
+### 2.2 Specific Comparisons:
 
-### 2.2 Specific Comparisons (TODO):
+The comparison process between the critical source code files identified by ATDCodeAnalylzer and those impacted by Architectural Smells in Sas et al. 2022's work.
 
-2.2.1 Provide a detailed explanation of the comparison process for each of the repositories: ActiveMQ and Guava.
+2.2.1 The process of executing ATDCodeAnalyzer on these repositories and comparing the results with Sas et al.'s method (SASM).
 
-2.2.2 Describe the process of executing your method on these repositories and comparing the results with Sas et al.'s method (SASM).
+We generated two sets: set 1 - critical classes identified by ATDCodeAnalyzer and set 2 - we identified the classes affected by architectural smells (CD and HLD) that had the most changes over time.
+
+We identified the set of files the has intersections between set1 and set2
+
+More details in [comparing_sas2022](https://github.com/armandossrecife/piloto/blob/main/notebooks/compare_with_sas2022.ipynb)
 
 ## 3. Testing and Comparison with Tsoukalas et al. 2023 (m3) on the Kafka Repository:
 

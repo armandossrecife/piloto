@@ -1,0 +1,63 @@
+@startuml
+
+package "Extract Data" <<Sys>> {
+  [Repository]
+  [Extract Commits and Messages]
+  [Extract Files]
+}
+
+package "Issues Analyzer" <<IssuesAnalyzer>>{
+  [Issue Analyzer]
+}
+
+package "Extract Issues" <<Issues>> {
+  [Extract Issues from Commits]
+  [Extract Issues from Jira]
+}
+
+package "Compile Issues" <<OrganizeIssues>>{
+  [Create Data Issues]
+}
+
+package "Compile Commits" <<OrganizeCommits>>{
+  [Extract Issues Info]
+
+}
+
+package "Calculate Frequency of Files in Issues" <<FOCIssues>>{
+  [Generate Issues Commits and Files]
+  [Generate Data Commits and Files]
+  [Generate Data Commits and Issues]
+  [Generate Summary of Files and Issues]
+} 
+
+package "Correlation between ATDCodeAnalyzer and FOCISSUES" <<Correlation>>{
+  [Acquire Critical Files by ATDCodeAnalyzer]
+  [Acquire Files with High frequence in Issues]
+  [Filter only Critical Files]
+  [Generate composition between Critical Files and Files in Issues]
+  [Generate correlation via Spearman's rank correlation coefficient]
+}
+
+[Git] --> [Repository]
+[Pydriller] --> [Repository]
+[Pydriller] --> [Extract Commits and Messages]
+[Pydriller] --> [Extract Files]
+[Jira Connect] --> [Jira Server] 
+[Issue Analyzer] --> [Jira Connect]
+[Issue Analyzer] --> [Extract Commits and Messages]
+[Issue Analyzer] -->  [Extract Files]
+
+[Issue Analyzer] --> [Extract Issues from Commits]
+[Issue Analyzer] --> [Extract Issues from Jira]
+[Extract Issues from Jira] --> [Create Data Issues]
+[Extract Issues from Commits] --> [Extract Issues Info]
+[Extract Issues Info] --> [Generate Issues Commits and Files]
+[Extract Issues Info] --> [Generate Data Commits and Files]
+[Extract Issues Info] --> [Generate Data Commits and Issues]
+[Generate Data Commits and Issues] --> [Generate Summary of Files and Issues]
+
+[Generate composition between Critical Files and Files in Issues] --> [Generate correlation via Spearman's rank correlation coefficient]
+[Acquire Critical Files by ATDCodeAnalyzer] --> [ATDCodeAnalyzer]
+
+@enduml
